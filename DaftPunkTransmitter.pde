@@ -37,6 +37,8 @@ class MidiMessage {
   }
 }
 
+List<RailSegment> leftRail;    // Rail segment mapping
+
 List<Pattern> activePatterns;  // Patterns that are currently displaying
 LinkedBlockingQueue<MidiMessage> noteOnMessages;    // 'On' messages that we need to handle
 LinkedBlockingQueue<MidiMessage> noteOffMessages;   // 'Off' messages that we need to handle
@@ -59,6 +61,14 @@ void setup() {
   sign.setEnableGammaCorrection(true);
 
   myBus = new MidiBus(this, midiInputName, -1);  
+  
+  // Add the left rails
+  leftRail = Collections.synchronizedList(new LinkedList<RailSegment>());
+  leftRail.add(new RailSegment("A2", 0, 29, 24));
+  leftRail.add(new RailSegment("A3", 0, 55, 24));
+  leftRail.add(new RailSegment("A4", 0, 81, 25));
+  leftRail.add(new RailSegment("A5", 0, 107, 25));
+  leftRail.add(new RailSegment("A6", 0, 132, 25));
 }
 
 void draw() {
@@ -66,12 +76,21 @@ void draw() {
   while(noteOnMessages.size() > 0) {
     MidiMessage m = noteOnMessages.poll();
     switch(m.m_channel) {
-      case 0:
+      case 1:
+        // Strips
         activePatterns.add(new LinePattern(m.m_channel, m.m_pitch, m.m_velocity));
         break;
-    }
-    switch(m.m_channel) {
-      case 1:
+      case 0:
+        // Segments
+        int segment = m.m_pitch - 60;
+
+        if (segment >= 0 && segment < leftRail.size()) {
+          println(segment);
+          activePatterns.add(new RailSegmentPattern(leftRail.get(segment),m.m_channel, m.m_pitch, m.m_velocity));
+        }
+        break;
+      case 2:
+        // Flashes
         activePatterns.add(new FlashPattern(m.m_channel, m.m_pitch, m.m_velocity));
         break;
     }
@@ -83,7 +102,6 @@ void draw() {
     while (it.hasNext()) {
       Pattern p = it.next();
       if(p.m_channel == m.m_channel && p.m_pitch == m.m_pitch) {
-        println(p.m_channel);
         it.remove();
       }
     }
