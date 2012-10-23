@@ -77,7 +77,7 @@ void draw() {
         break;
       case 0:
         // Segments
-        int segment = m.m_pitch - 60;
+        int segment = m.m_pitch - 36;
 
         if (segment >= 0 && segment < leftRail.size()) {
           println(segment);
