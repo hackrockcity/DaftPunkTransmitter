@@ -158,9 +158,9 @@ public class LEDDisplay {
       for (int x=0; x<w; x++) {
 
         if (isRGB) {
-          r = int(red(image.pixels[y*w+x]));
-          g = int(green(image.pixels[y*w+x]));
-          b = int(blue(image.pixels[y*w+x]));
+          r = int(red(image.pixels[y*width+x]));
+          g = int(green(image.pixels[y*width+x]));
+          b = int(blue(image.pixels[y*width+x]));
           
           if (enableGammaCorrection) {
             r = (int)(Math.pow(r/256.0,this.gammaValue)*256*bright);
@@ -173,7 +173,7 @@ public class LEDDisplay {
           buffer[(getAddress(x, y)*3)+3] = byte(b);
         }
         else {
-          r = int(brightness(image.pixels[y*w+x]));
+          r = int(brightness(image.pixels[y*width+x]));
 
           if (enableGammaCorrection) {
             r = (int)(Math.pow(r/256.0,this.gammaValue)*256);

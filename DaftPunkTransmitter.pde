@@ -28,6 +28,7 @@ int BOX3=16;
 int BOX4=24;
 int BOX5=32;
 
+
 public color[] channelColors = new color[] {
       color(255,0,0), 
       color(0,255,0), 
@@ -72,8 +73,9 @@ LinkedBlockingQueue<MidiMessage> noteOffMessages;   // 'Off' messages that we ne
 LEDDisplay    sign;
 MidiBus       myBus;
 
+
 void setup() {
-  size(displayWidth, displayHeight);
+  size(800, 500);
   frameRate(FRAMERATE);
 
   activePatterns = Collections.synchronizedList(new LinkedList<Pattern>());
