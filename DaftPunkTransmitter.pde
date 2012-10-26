@@ -113,22 +113,22 @@ void draw() {
           activePatterns.add(new RailSegmentPattern(LeftRailSegments.get(segment),m.m_channel, m.m_pitch, m.m_velocity));
         }
         break;
-//      case 2:
-//        println("Adding flashes " + m.m_channel + " " + m.m_pitch + " " + m.m_velocity);
-//
-//        // Flashes
-//        activePatterns.add(new FlashPattern(m.m_channel, m.m_pitch, m.m_velocity));
-//        break;
-//        
-//      // What ever isn't mapped uses the brightness pattern
-//      default:
-//        activePatterns.add(
-//          new RailSegmentBrightnessPattern(
-//            m.m_channel, m.m_pitch, m.m_velocity
-//          )
-//        );
+      case 2:
+        println("Adding flashes " + m.m_channel + " " + m.m_pitch + " " + m.m_velocity);
+
+        // Flashes
+        activePatterns.add(new FlashPattern(m.m_channel, m.m_pitch, m.m_velocity));
+        break;
+       
+      // What ever isn't mapped uses the brightness pattern
+      default:
+        activePatterns.add(
+          new RailSegmentBrightnessPattern(
+            m.m_channel, m.m_pitch, m.m_velocity
+          )
+        );
         
-//        break;
+        break;
     }
   }
    

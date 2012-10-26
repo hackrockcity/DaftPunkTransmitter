@@ -1,5 +1,5 @@
 class RailSegmentBrightnessPattern extends Pattern {
-  RailSegment m_segment = null;
+  Segment m_segment = null;
   color m_color;
 
   RailSegmentBrightnessPattern(int channel, int pitch, int velocity) {
@@ -8,8 +8,8 @@ class RailSegmentBrightnessPattern extends Pattern {
     color basecolor;
     float ratio;
     
-    if (pitch >= 36 && pitch-36 < leftRail.size()) {
-      m_segment = leftRail.get(pitch-36);
+    if (pitch >= 36 && pitch-36 < LeftRailSegments.size()) {
+      m_segment = LeftRailSegments.get(pitch-36);
       
       ratio = (velocity/127.0);
       basecolor = channelColors[channel];
