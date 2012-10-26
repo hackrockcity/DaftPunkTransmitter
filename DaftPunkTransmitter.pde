@@ -20,6 +20,14 @@ int FRAMERATE = 30;                     // larger number means faster updates
 float bright = 1;                       // Global brightness modifier
 String midiInputName = "IAC Bus 1";
 
+List<Segment> LeftRailSegments;
+
+int BOX1=0;
+int BOX2=8;
+int BOX3=16;
+int BOX4=24;
+int BOX5=32;
+
 public color[] channelColors = new color[] {
       color(255,0,0), 
       color(0,255,0), 
@@ -54,7 +62,7 @@ class MidiMessage {
   }
 }
 
-List<RailSegment> leftRail;    // Rail segment mapping
+//List<RailSegment> leftRail;    // Rail segment mapping
 
 List<Pattern> activePatterns;  // Patterns that are currently displaying
 LinkedBlockingQueue<MidiMessage> noteOnMessages;    // 'On' messages that we need to handle
@@ -80,7 +88,7 @@ void setup() {
   myBus = new MidiBus(this, midiInputName, -1);  
   
   // Add the left rails
-  defineStrips();
+  defineLeftRail();
 }
 
 void draw() {
@@ -101,27 +109,26 @@ void draw() {
 
         segment = m.m_pitch - 36;
 
-        if (segment >= 0 && segment < leftRail.size()) {
-          println(segment);
-          activePatterns.add(new RailSegmentPattern(leftRail.get(segment),m.m_channel, m.m_pitch, m.m_velocity));
+        if (segment >= 0 && segment < LeftRailSegments.size()) {
+          activePatterns.add(new RailSegmentPattern(LeftRailSegments.get(segment),m.m_channel, m.m_pitch, m.m_velocity));
         }
         break;
-      case 2:
-        println("Adding flashes " + m.m_channel + " " + m.m_pitch + " " + m.m_velocity);
-
-        // Flashes
-        activePatterns.add(new FlashPattern(m.m_channel, m.m_pitch, m.m_velocity));
-        break;
+//      case 2:
+//        println("Adding flashes " + m.m_channel + " " + m.m_pitch + " " + m.m_velocity);
+//
+//        // Flashes
+//        activePatterns.add(new FlashPattern(m.m_channel, m.m_pitch, m.m_velocity));
+//        break;
+//        
+//      // What ever isn't mapped uses the brightness pattern
+//      default:
+//        activePatterns.add(
+//          new RailSegmentBrightnessPattern(
+//            m.m_channel, m.m_pitch, m.m_velocity
+//          )
+//        );
         
-      // What ever isn't mapped uses the brightness pattern
-      default:
-        activePatterns.add(
-          new RailSegmentBrightnessPattern(
-            m.m_channel, m.m_pitch, m.m_velocity
-          )
-        );
-        
-        break;
+//        break;
     }
   }
    

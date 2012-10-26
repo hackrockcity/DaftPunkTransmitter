@@ -1,8 +1,8 @@
 class RailSegmentPattern extends Pattern {
-  RailSegment m_segment;
+  Segment m_segment;
   
   
-  RailSegmentPattern(RailSegment segment, int channel, int pitch, int velocity) {
+  RailSegmentPattern(Segment segment, int channel, int pitch, int velocity) {
     super(channel, pitch, velocity);
     m_segment = segment;
   }
