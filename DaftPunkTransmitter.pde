@@ -17,10 +17,27 @@ int displayWidth = 40;                  // 8* number of control boxes
 int displayHeight = 160;                // 160 for full-height strips
 
 int FRAMERATE = 30;                     // larger number means faster updates
-
 float bright = 1;                       // Global brightness modifier
-
 String midiInputName = "IAC Bus 1";
+
+public color[] channelColors = new color[] {
+      color(255,0,0), 
+      color(0,255,0), 
+      color(0,0,255), 
+      color(255,255,0), 
+      color(0,255,255), 
+      color(255,0,255), 
+      color(255,255,255),
+      color(255,64,64),
+      color(255,127,0),
+      color(0,255,127),
+      color(255,0,0), 
+      color(0,255,0), 
+      color(0,0,255), 
+      color(255,255,0), 
+      color(0,255,255), 
+      color(255,0,255)
+};
 
 
 ///////////////////////////////////////////////////////
@@ -67,17 +84,22 @@ void setup() {
 }
 
 void draw() {
+  int segment;
+  
   // Add any new patterns that might have arrived
   while(noteOnMessages.size() > 0) {
     MidiMessage m = noteOnMessages.poll();
     switch(m.m_channel) {
       case 1:
         // Strips
+        println("Adding line pattern " + m.m_channel + " " + m.m_pitch + " " + m.m_velocity);
         activePatterns.add(new LinePattern(m.m_channel, m.m_pitch, m.m_velocity));
         break;
       case 0:
         // Segments
-        int segment = m.m_pitch - 36;
+        println("Adding rail segment pattern " + m.m_channel + " " + m.m_pitch + " " + m.m_velocity);
+
+        segment = m.m_pitch - 36;
 
         if (segment >= 0 && segment < leftRail.size()) {
           println(segment);
@@ -85,8 +107,20 @@ void draw() {
         }
         break;
       case 2:
+        println("Adding flashes " + m.m_channel + " " + m.m_pitch + " " + m.m_velocity);
+
         // Flashes
         activePatterns.add(new FlashPattern(m.m_channel, m.m_pitch, m.m_velocity));
+        break;
+        
+      // What ever isn't mapped uses the brightness pattern
+      default:
+        activePatterns.add(
+          new RailSegmentBrightnessPattern(
+            m.m_channel, m.m_pitch, m.m_velocity
+          )
+        );
+        
         break;
     }
   }
@@ -123,14 +157,14 @@ void draw() {
 
 void noteOn(int channel, int pitch, int velocity) {
   // Receive a noteOn
-//  println("On  " + channel + " " + pitch + " " + velocity);
+ // println("On  " + channel + " " + pitch + " " + velocity);
 
   noteOnMessages.add(new MidiMessage(channel, pitch, velocity));
 }
 
 void noteOff(int channel, int pitch, int velocity) {
   // Receive a noteOff
-//  println("Off " + channel + " " + pitch + " " + velocity);
+  //println("Off " + channel + " " + pitch + " " + velocity);
   
   noteOffMessages.add(new MidiMessage(channel, pitch, velocity));
 }
