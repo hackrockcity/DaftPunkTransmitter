@@ -26,8 +26,26 @@ float bright = 1;                       // Global brightness modifier
 String midiInputName = "IAC Bus 1";
 //String midiInputName = "Port 1";
 
+long modeFrameStart;
+
+
+Pattern[] enabledRoutines = new Pattern[] {
+ // new Bursts(), 
+  
+ //  new RGBRoutine(), 
+   
+//   new ColorDrop(), 
+ 
+  //new WarpSpeedMrSulu()
+  
+  new RainbowColors(),
+};
+
 boolean leftProject = true;
 BitmapPattern leftRailBitmap;
+
+boolean rightProject = true;
+BitmapPattern rightRailBitmap;
 
 List<Segment> LeftRailSegments;
 Fixture leftRail;
@@ -57,22 +75,22 @@ int rectY = 100;
 
 
 public color[] channelColors = new color[] {
-      color(255,0,0), 
-      color(0,255,0), 
-      color(0,0,255), 
-      color(255,255,0), 
-      color(0,255,255), 
-      color(255,0,255), 
-      color(255,255,255),
-      color(255,64,64),
-      color(255,127,0),
-      color(0,255,127),
-      color(255,0,0), 
-      color(0,255,0), 
-      color(0,0,255), 
-      color(255,255,0), 
-      color(0,255,255), 
-      color(255,0,255)
+  color(255, 0, 0), 
+  color(0, 255, 0), 
+  color(0, 0, 255), 
+  color(255, 255, 0), 
+  color(0, 255, 255), 
+  color(255, 0, 255), 
+  color(255, 255, 255), 
+  color(255, 64, 64), 
+  color(255, 127, 0), 
+  color(0, 255, 127), 
+  color(255, 0, 0), 
+  color(0, 255, 0), 
+  color(0, 0, 255), 
+  color(255, 255, 0), 
+  color(0, 255, 255), 
+  color(255, 0, 255)
 };
 
 
@@ -82,7 +100,7 @@ class MidiMessage {
   public int m_channel;
   public int m_pitch;
   public int m_velocity;
-  
+
   MidiMessage(int channel, int pitch, int velocity) {
     m_channel = channel;
     m_pitch = pitch;
@@ -101,7 +119,12 @@ MidiBus       myBus;
 void setup() {
   size(1400, 350);
   frameRate(FRAMERATE);
-  
+
+  for (Pattern r : enabledRoutines) {
+    r.setup(this);
+    r.reset();
+  }  
+
   activePatterns = Collections.synchronizedList(new LinkedList<Pattern>());
 
   noteOnMessages = new LinkedBlockingQueue<MidiMessage>();
@@ -112,94 +135,97 @@ void setup() {
   sign.setEnableGammaCorrection(true);
 
   myBus = new MidiBus(this, midiInputName, -1);  
-  
+
   defineLeftRail();   // Define the rail segments by where they are in pixel space
   leftRail = new Fixture(LeftRailSegments, new PVector(100, 0));
-  
+
   if (!duplicateRails) {
     defineRightRail();
     rightRail = new Fixture(RightRailSegments, new PVector(750, 0));
   }
-  
-//  defineLeftTrapazoid();
-//  leftTrapazoid = new Fixture(LeftTrapazoidSegments, new PVector(250, 200)); 
-//  
-//  if (!duplicateTrapazoids) {
-//    defineCenterTrapazoid();
-//    centerTrapazoid = new Fixture(CenterTrapazoidSegments, new PVector(600, 200));
-//  
-//    defineRightTrapazoid();
-//    rightTrapazoid = new Fixture(RightTrapazoidSegments, new PVector(950, 200));
-//  }
-  
+
+  //  defineLeftTrapazoid();
+  //  leftTrapazoid = new Fixture(LeftTrapazoidSegments, new PVector(250, 200)); 
+  //  
+  //  if (!duplicateTrapazoids) {
+  //    defineCenterTrapazoid();
+  //    centerTrapazoid = new Fixture(CenterTrapazoidSegments, new PVector(600, 200));
+  //  
+  //    defineRightTrapazoid();
+  //    rightTrapazoid = new Fixture(RightTrapazoidSegments, new PVector(950, 200));
+  //  }
+
   leftRailBitmap = new BitmapPattern(leftRail);
+  rightRailBitmap = new BitmapPattern(rightRail);
+  
+  modeFrameStart = frameCount;
 }
 
 void draw() {
   int segment;
-  
+
   if (leftProject && !activePatterns.contains(leftRailBitmap)) activePatterns.add(leftRailBitmap);
+  if (rightProject && !activePatterns.contains(rightRailBitmap)) activePatterns.add(rightRailBitmap);
   
   // Add any new patterns that might have arrived
-  while(noteOnMessages.size() > 0) {
+  while (noteOnMessages.size () > 0) {
     MidiMessage m = noteOnMessages.poll();
-        
+
     switch(m.m_channel) {
-      case 1:
-        // Strips
-//        println("Adding line pattern " + m.m_channel + " " + m.m_pitch + " " + m.m_velocity);
-        activePatterns.add(new LinePattern(m.m_channel, m.m_pitch, m.m_velocity));
-        break;
-      case 0:
-        // Segments
-//        println("Adding rail segment pattern " + m.m_channel + " " + m.m_pitch + " " + m.m_velocity);
+    case 1:
+      // Strips
+      //        println("Adding line pattern " + m.m_channel + " " + m.m_pitch + " " + m.m_velocity);
+      activePatterns.add(new LinePattern(m.m_channel, m.m_pitch, m.m_velocity));
+      break;
+    case 0:
+      // Segments
+      //        println("Adding rail segment pattern " + m.m_channel + " " + m.m_pitch + " " + m.m_velocity);
 
-        segment = m.m_pitch - 36;
+      segment = m.m_pitch - 36;
 
-        if (segment >= 0 && segment < LeftRailSegments.size()) {
-          activePatterns.add(new RailSegmentPattern(LeftRailSegments.get(segment),m.m_channel, m.m_pitch, m.m_velocity));
-          activePatterns.add(new RailSegmentPattern(RightRailSegments.get(segment),m.m_channel, m.m_pitch, m.m_velocity));
-          
-          if(m.m_pitch == 41) leftProject = !leftProject;
-          
-        }
-        break;
-      case 2:
-//        println("Adding flashes " + m.m_channel + " " + m.m_pitch + " " + m.m_velocity);
+      if (segment >= 0 && segment < LeftRailSegments.size()) {
+        activePatterns.add(new RailSegmentPattern(LeftRailSegments.get(segment), m.m_channel, m.m_pitch, m.m_velocity));
+        activePatterns.add(new RailSegmentPattern(RightRailSegments.get(segment), m.m_channel, m.m_pitch, m.m_velocity));
 
-        // Flashes
-        activePatterns.add(new FlashPattern(m.m_channel, m.m_pitch, m.m_velocity));
-        break;
-       
+        if (m.m_pitch == 41) leftProject = !leftProject;
+      }
+      break;
+    case 2:
+      //        println("Adding flashes " + m.m_channel + " " + m.m_pitch + " " + m.m_velocity);
+
+      // Flashes
+      activePatterns.add(new FlashPattern(m.m_channel, m.m_pitch, m.m_velocity));
+      break;
+
       // What ever isn't mapped uses the brightness pattern
-      default:
-        activePatterns.add(
-          new RailSegmentBrightnessPattern(
-            m.m_channel, m.m_pitch, m.m_velocity
-          )
+    default:
+      activePatterns.add(
+      new RailSegmentBrightnessPattern(
+      m.m_channel, m.m_pitch, m.m_velocity
+        )
         );
-        
-        break;
+
+      break;
     }
   }
-  
+
   if (!leftProject) activePatterns.remove(leftRailBitmap);
-   
-  while(noteOffMessages.size() > 0) {
+
+  while (noteOffMessages.size () > 0) {
     MidiMessage m = noteOffMessages.poll();
     Iterator<Pattern> it = activePatterns.iterator();
-    while (it.hasNext()) {
+    while (it.hasNext ()) {
       Pattern p = it.next();
-      if(p.m_channel == m.m_channel && p.m_pitch == m.m_pitch) {
+      if (p.m_channel == m.m_channel && p.m_pitch == m.m_pitch) {
         it.remove();
       }
     }
   }
-    
+
   // TODO: Remove any old patterns that might have disappeared
-  
+
   background(0);
-  
+
   pushStyle();
   fill(255);
   noStroke();
@@ -208,25 +234,28 @@ void draw() {
   stroke(255);
   line(displayWidth + 1, 0, displayWidth + 1, height);
   popStyle();
-  
+
+  enabledRoutines[0].draw();
+
   for (Pattern p : activePatterns) {
     p.draw();
   }
 
   // delete dead patterns?
-  if(keyPressed && key == 'c') {
+  if (keyPressed && key == 'c') {
     // clear everything
     activePatterns.clear();
   }
 
-  sign.sendData();
 
+
+  sign.sendData();
 }
 
 
 void noteOn(int channel, int pitch, int velocity) {
   // Receive a noteOn
- // println("On  " + channel + " " + pitch + " " + velocity);
+  // println("On  " + channel + " " + pitch + " " + velocity);
 
   noteOnMessages.add(new MidiMessage(channel, pitch, velocity));
 }
@@ -234,7 +263,7 @@ void noteOn(int channel, int pitch, int velocity) {
 void noteOff(int channel, int pitch, int velocity) {
   // Receive a noteOff
   //println("Off " + channel + " " + pitch + " " + velocity);
-  
+
   noteOffMessages.add(new MidiMessage(channel, pitch, velocity));
 }
 
