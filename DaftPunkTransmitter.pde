@@ -186,7 +186,6 @@ void setup() {
   defineLeftRail();   // Define the rail segments by where they are in pixel space
   //leftRail = new Fixture(LeftRailSegments, new PVector(100, 0));
 
-
    defineRightRail();
    //rightRail = new Fixture(RightRailSegments, new PVector(750, 0));
    combinedRails = new Fixture(LeftRailSegments, RightRailSegments, new PVector(100, 000));
@@ -232,10 +231,12 @@ void draw() {
 
       segment = m.m_pitch - 36;
 
+      // TODO: WTF, left rails are defined twice?
       if (segment >= 0 && segment < LeftRailSegments.size()) {
         layer2.add(new RailSegmentPattern(LeftRailSegments.get(segment), m.m_channel, m.m_pitch, m.m_velocity));
+      }
+      if (segment >= 0 && segment < RightRailSegments.size()) {
         layer2.add(new RailSegmentPattern(RightRailSegments.get(segment), m.m_channel, m.m_pitch, m.m_velocity));
-
       }
       break;
     case 4:
