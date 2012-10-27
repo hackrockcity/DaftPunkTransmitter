@@ -113,8 +113,13 @@ class MidiMessage {
   }
 }
 
-List<Pattern> activePatterns;  // Patterns that are currently displaying
-List<Pattern> priorityPatterns;  // Patterns that are currently displaying
+List<List<Pattern>> layers;
+
+
+List<Pattern> layer0;
+List<Pattern> layer1;
+List<Pattern> layer2;
+
 LinkedBlockingQueue<MidiMessage> noteOnMessages;    // 'On' messages that we need to handle
 LinkedBlockingQueue<MidiMessage> noteOffMessages;   // 'Off' messages that we need to handle
 
@@ -135,7 +140,7 @@ void setup() {
   
   RGBRoutine rgb = new RGBRoutine();
   rgb.m_channel = 9;
-  rgb.m_pitch = 26;
+  rgb.m_pitch = 25;
   enabledPatterns.put("RGB", rgb);
 
   for (Map.Entry r : enabledPatterns.entrySet()) {
@@ -144,8 +149,20 @@ void setup() {
     pat.reset();
   }  
 
-  activePatterns = Collections.synchronizedList(new LinkedList<Pattern>());
-  priorityPatterns = Collections.synchronizedList(new LinkedList<Pattern>());
+//  activePatterns = Collections.synchronizedList(new LinkedList<Pattern>());
+//  priorityPatterns = Collections.synchronizedList(new LinkedList<Pattern>());
+  
+  layer0 = Collections.synchronizedList(new LinkedList<Pattern>());
+  layer1 = Collections.synchronizedList(new LinkedList<Pattern>());
+  layer2 = Collections.synchronizedList(new LinkedList<Pattern>());
+  
+  layer0 = new LinkedList<Pattern>();
+  layer1 = new LinkedList<Pattern>();
+  layer2 = new LinkedList<Pattern>();
+  
+//  layers.add(layer0);
+//  layers.add(layer1);
+//  layers.add(layer2);
 
   noteOnMessages = new LinkedBlockingQueue<MidiMessage>();
   noteOffMessages = new LinkedBlockingQueue<MidiMessage>();
@@ -171,11 +188,12 @@ void setup() {
 
   combinedTrapazoids = new Fixture(LeftTrapazoidSegments, CenterTrapazoidSegments, RightTrapazoidSegments, new PVector(250, 200));
 
-
+  
   combinedBitmap = new BitmapPattern(combinedRails);
   combinedTrapBitmap = new BitmapPattern(combinedTrapazoids);
 
   modeFrameStart = frameCount;
+
 }
 
 void draw() {
@@ -196,7 +214,7 @@ void draw() {
     case 1:
       // Strips
       //        println("Adding line pattern " + m.m_channel + " " + m.m_pitch + " " + m.m_velocity);
-      priorityPatterns.add(new LinePattern(m.m_channel, m.m_pitch, m.m_velocity));
+      layer0.add(new LinePattern(m.m_channel, m.m_pitch, m.m_velocity));
       break;
     case 0:
       // Segments
@@ -205,8 +223,8 @@ void draw() {
       segment = m.m_pitch - 36;
 
       if (segment >= 0 && segment < LeftRailSegments.size()) {
-        priorityPatterns.add(new RailSegmentPattern(LeftRailSegments.get(segment), m.m_channel, m.m_pitch, m.m_velocity));
-        priorityPatterns.add(new RailSegmentPattern(RightRailSegments.get(segment), m.m_channel, m.m_pitch, m.m_velocity));
+        layer2.add(new RailSegmentPattern(LeftRailSegments.get(segment), m.m_channel, m.m_pitch, m.m_velocity));
+        layer2.add(new RailSegmentPattern(RightRailSegments.get(segment), m.m_channel, m.m_pitch, m.m_velocity));
 
       }
       break;
@@ -214,22 +232,22 @@ void draw() {
               println("Adding flashes " + m.m_channel + " " + m.m_pitch + " " + m.m_velocity);
 
       // Flashes
-      activePatterns.add(new FlashPattern(m.m_channel, m.m_pitch, m.m_velocity));
+      layer0.add(new FlashPattern(m.m_channel, m.m_pitch, m.m_velocity));
       break;
 
     case 9:
       
       for (Map.Entry p : enabledPatterns.entrySet()) {
         Pattern pat = (Pattern) p.getValue();
-        if (pat.m_channel == m.m_channel && pat.m_pitch == m.m_pitch && !activePatterns.contains(pat)) {
-          priorityPatterns.add(pat);
+        if (pat.m_channel == m.m_channel && pat.m_pitch == m.m_pitch && !layer1.contains(pat)) {
+          layer1.add(pat);
         }
       }
       break;
 
       // What ever isn't mapped uses the brightness pattern
     default:
-      priorityPatterns.add(
+      layer2.add(
       new RailSegmentBrightnessPattern(
       m.m_channel, m.m_pitch, m.m_velocity
         )
@@ -242,19 +260,57 @@ void draw() {
 
   while (noteOffMessages.size () > 0) {
     MidiMessage m = noteOffMessages.poll();
-    Iterator<Pattern> it = activePatterns.iterator();
+//    Iterator<Pattern> it = activePatterns.iterator();
+//    
+//    println("off " + m.m_channel + " " + m.m_pitch);
+//    while (it.hasNext ()) {
+//      Pattern p = it.next();
+//      if (p.m_channel == m.m_channel && p.m_pitch == m.m_pitch) {
+//        it.remove();
+//        println("removing " + it);
+//      }
+//    }
+//    
+//    Iterator<Pattern> it2 = priorityPatterns.iterator();
+//    println("off " + m.m_channel + " " + m.m_pitch);
+//    while (it2.hasNext ()) {
+//      Pattern p = it2.next();
+//      if (p.m_channel == m.m_channel && p.m_pitch == m.m_pitch) {
+//        it2.remove();
+//        println("removing " + it2);
+//      }
+//    }
     
-    println("off " + m.m_channel + " " + m.m_pitch);
-    while (it.hasNext ()) {
-      Pattern p = it.next();
+    
+//    Iterator<List<Pattern>> it = layers.iterator();
+//    while (it.hasNext()) {
+//      List<Pattern> layer = it.next();
+//      for (Pattern p : layer) {
+//        if (p.m_channel == m.m_channel && p.m_pitch == m.m_pitch) {
+//          layer.remove(p);
+//        }
+//      } 
+//    }
+
+    Iterator<Pattern> it0 = layer0.iterator();
+    while (it0.hasNext ()) {
+      Pattern p = it0.next();
       if (p.m_channel == m.m_channel && p.m_pitch == m.m_pitch) {
-        it.remove();
-        println("removing " + it);
+        it0.remove();
+        println("removing " + it0);
       }
     }
     
-    Iterator<Pattern> it2 = priorityPatterns.iterator();
-    println("off " + m.m_channel + " " + m.m_pitch);
+    Iterator<Pattern> it1 = layer1.iterator();
+    while (it1.hasNext ()) {
+      Pattern p = it1.next();
+      if (p.m_channel == m.m_channel && p.m_pitch == m.m_pitch) {
+        it1.remove();
+        println("removing " + it1);
+      }
+    }
+    
+    Iterator<Pattern> it2 = layer2.iterator();
     while (it2.hasNext ()) {
       Pattern p = it2.next();
       if (p.m_channel == m.m_channel && p.m_pitch == m.m_pitch) {
@@ -262,7 +318,9 @@ void draw() {
         println("removing " + it2);
       }
     }
+  
   }
+    
 
   // TODO: Remove any old patterns that might have disappeared
 
@@ -276,23 +334,31 @@ void draw() {
 //  popStyle();
 
 
-  for (Pattern p : activePatterns) {
-    p.draw();
+//  for (Pattern p : activePatterns) {
+//    p.draw();
+//  }
+
+  for (Pattern p0 : layer0) {
+    p0.draw(); 
+  }
+  
+  for (Pattern p1 : layer1) {
+    p1.draw(); 
   }
   
   combinedBitmap.draw();
   combinedTrapBitmap.draw();
    
-  for (Pattern p : priorityPatterns) {
-    println(p);
-    p.draw(); 
+  for (Pattern p2 : layer2) {
+    p2.draw();  
   }
 
   // delete dead patterns?
   if (keyPressed && key == 'c') {
     // clear everything
-    activePatterns.clear();
-    priorityPatterns.clear();
+   layer0.clear();
+   layer1.clear();
+   layer2.clear();
   }
 
 
