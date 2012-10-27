@@ -10,6 +10,8 @@ class Pattern {
     m_velocity = velocity;
   }
   
+  Pattern() {}
+  
   void draw() {
   }
 

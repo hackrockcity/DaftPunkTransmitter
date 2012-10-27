@@ -9,10 +9,11 @@ import java.util.concurrent.*;
 /////////// Configuration Options /////////////////////
 
 boolean duplicateTrapazoids = true;
-boolean duplicateRails = true;
+boolean duplicateRails = false;
 boolean mirrorRails = false;
 
 // Network configuration
+//String transmit_address = "192.168.0.16";  // Default 127.0.0.1
 String transmit_address = "127.0.0.1";  // Default 127.0.0.1
 int transmit_port       = 58082;        // Default 58802
 
@@ -23,8 +24,9 @@ int displayHeight = 160;                // 160 for full-height strips
 int FRAMERATE = 30;                     // larger number means faster updates
 float bright = 1;                       // Global brightness modifier
 String midiInputName = "IAC Bus 1";
-//String midiInputName = "Port 1";
 
+boolean leftProject = true;
+BitmapPattern leftRailBitmap;
 
 List<Segment> LeftRailSegments;
 Fixture leftRail;
@@ -113,10 +115,10 @@ void setup() {
   defineLeftRail();   // Define the rail segments by where they are in pixel space
   leftRail = new Fixture(LeftRailSegments, new PVector(100, 0));
   
-  //if (!duplicateRails) {
-    defineRightRail();
-    rightRail = new Fixture(RightRailSegments, new PVector(750, 0));
-  //}
+  if (!duplicateRails) {
+   // defineRightRail();
+   // rightRail = new Fixture(RightRailSegments, new PVector(750, 0));
+  }
 
   defineLeftTrapazoid();
   leftTrapazoid = new Fixture(LeftTrapazoidSegments, new PVector(250, 200)); 
@@ -128,14 +130,20 @@ void setup() {
     defineRightTrapazoid();
     rightTrapazoid = new Fixture(RightTrapazoidSegments, new PVector(950, 200));
   }
+  
+  leftRailBitmap = new BitmapPattern(leftRail);
+  
 }
 
 void draw() {
   int segment;
   
+  if (leftProject && !activePatterns.contains(leftRailBitmap)) activePatterns.add(leftRailBitmap);
+  
   // Add any new patterns that might have arrived
   while(noteOnMessages.size() > 0) {
     MidiMessage m = noteOnMessages.poll();
+        
     switch(m.m_channel) {
       case 1:
         // Strips
@@ -151,7 +159,9 @@ void draw() {
         if (segment >= 0 && segment < LeftRailSegments.size()) {
           activePatterns.add(new RailSegmentPattern(LeftRailSegments.get(segment),m.m_channel, m.m_pitch, m.m_velocity));
           activePatterns.add(new RailSegmentPattern(RightRailSegments.get(segment),m.m_channel, m.m_pitch, m.m_velocity));
-
+          
+          if(m.m_pitch == 41) leftProject = !leftProject;
+          
         }
         break;
       case 2:
@@ -172,6 +182,8 @@ void draw() {
         break;
     }
   }
+  
+  if (!leftProject) activePatterns.remove(leftRailBitmap);
    
   while(noteOffMessages.size() > 0) {
     MidiMessage m = noteOffMessages.poll();
@@ -187,7 +199,10 @@ void draw() {
   // TODO: Remove any old patterns that might have disappeared
   
   background(0);
-
+  
+  fill(255);
+  rect(rectX - 50, rectY - 50, 100, 100);
+  
   for (Pattern p : activePatterns) {
     p.draw();
   }
@@ -196,20 +211,6 @@ void draw() {
   if(keyPressed && key == 'c') {
     // clear everything
     activePatterns.clear();
-  }
-  fill(255);
-  rect(rectX - 50, rectY - 50, 100, 100);
-  
-  
-  leftRail.project();
-  //if (!duplicateRails) {
-    rightRail.project();
-  //}
-  
-  leftTrapazoid.project();
-  if (!duplicateTrapazoids) {
-    centerTrapazoid.project();
-    rightTrapazoid.project();
   }
 
   sign.sendData();
