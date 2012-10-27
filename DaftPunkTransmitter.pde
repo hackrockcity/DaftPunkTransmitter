@@ -8,6 +8,10 @@ import java.util.concurrent.*;
 
 /////////// Configuration Options /////////////////////
 
+boolean duplicateTrapazoids = true;
+boolean duplicateRails = true;
+boolean mirrorRails = false;
+
 // Network configuration
 String transmit_address = "127.0.0.1";  // Default 127.0.0.1
 int transmit_port       = 58082;        // Default 58802
@@ -20,13 +24,32 @@ int FRAMERATE = 30;                     // larger number means faster updates
 float bright = 1;                       // Global brightness modifier
 String midiInputName = "IAC Bus 1";
 
+
 List<Segment> LeftRailSegments;
+Fixture leftRail;
+
+List<Segment> RightRailSegments;
+Fixture rightRail;
+
+List<Segment> LeftTrapazoidSegments;
+Fixture leftTrapazoid;
+
+List<Segment> CenterTrapazoidSegments;
+Fixture centerTrapazoid;
+
+List<Segment> RightTrapazoidSegments;
+Fixture rightTrapazoid;
 
 int BOX1=0;
 int BOX2=8;
 int BOX3=16;
 int BOX4=24;
 int BOX5=32;
+
+int strips = 40;
+
+int rectX = 0;
+int rectY = 0;
 
 
 public color[] channelColors = new color[] {
@@ -63,21 +86,18 @@ class MidiMessage {
   }
 }
 
-//List<RailSegment> leftRail;    // Rail segment mapping
-
 List<Pattern> activePatterns;  // Patterns that are currently displaying
 LinkedBlockingQueue<MidiMessage> noteOnMessages;    // 'On' messages that we need to handle
 LinkedBlockingQueue<MidiMessage> noteOffMessages;   // 'Off' messages that we need to handle
-
 
 LEDDisplay    sign;
 MidiBus       myBus;
 
 
 void setup() {
-  size(800, 500);
+  size(1400, 350);
   frameRate(FRAMERATE);
-
+  
   activePatterns = Collections.synchronizedList(new LinkedList<Pattern>());
 
   noteOnMessages = new LinkedBlockingQueue<MidiMessage>();
@@ -89,8 +109,24 @@ void setup() {
 
   myBus = new MidiBus(this, midiInputName, -1);  
   
-  // Add the left rails
-  defineLeftRail();
+  defineLeftRail();   // Define the rail segments by where they are in pixel space
+  leftRail = new Fixture(LeftRailSegments, new PVector(100, 0));
+  
+  //if (!duplicateRails) {
+    defineRightRail();
+    rightRail = new Fixture(RightRailSegments, new PVector(750, 0));
+  //}
+
+  defineLeftTrapazoid();
+  leftTrapazoid = new Fixture(LeftTrapazoidSegments, new PVector(250, 200)); 
+  
+  if (!duplicateTrapazoids) {
+    defineCenterTrapazoid();
+    centerTrapazoid = new Fixture(CenterTrapazoidSegments, new PVector(600, 200));
+  
+    defineRightTrapazoid();
+    rightTrapazoid = new Fixture(RightTrapazoidSegments, new PVector(950, 200));
+  }
 }
 
 void draw() {
@@ -158,9 +194,23 @@ void draw() {
     // clear everything
     activePatterns.clear();
   }
-    
+  fill(255);
+  rect(rectX - 50, rectY - 50, 100, 100);
+  
+  
+  leftRail.project();
+  //if (!duplicateRails) {
+    rightRail.project();
+  //}
+  
+  leftTrapazoid.project();
+  if (!duplicateTrapazoids) {
+    centerTrapazoid.project();
+    rightTrapazoid.project();
+  }
 
   sign.sendData();
+
 }
 
 
@@ -176,5 +226,10 @@ void noteOff(int channel, int pitch, int velocity) {
   //println("Off " + channel + " " + pitch + " " + velocity);
   
   noteOffMessages.add(new MidiMessage(channel, pitch, velocity));
+}
+
+void mouseMoved() {
+  rectX = mouseX;
+  rectY = mouseY;
 }
 

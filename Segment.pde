@@ -72,5 +72,29 @@ class Segment {
       line(sub.m_strip, sub.m_start, sub.m_strip, sub.m_start + sub.m_length);
     }
   }
+  
+  void project() {
+    loadPixels();
+    for (SubSegment sub : subSegments) {
+      float amt = 1.0 / abs(sub.m_length);
+      if (sub.m_length > 0) {
+        for (int x=0; x < sub.m_length; x++) {
+          PVector subpoint = new PVector(lerp(sub.pixel_start_position.x, sub.pixel_end_position.x, amt * x), lerp(sub.pixel_start_position.y, sub.pixel_end_position.y, amt * x));
+          pixels[sub.m_strip + (width * (sub.m_start + x))] = pixels[int(subpoint.x) + (width * int(subpoint.y))];
+        }
+      } else {
+        for (int x=abs(sub.m_length); x > 0; x--) {
+          PVector subpoint = new PVector(lerp(sub.pixel_start_position.x, sub.pixel_end_position.x, amt * x), lerp(sub.pixel_start_position.y, sub.pixel_end_position.y, amt * x));
+          pixels[sub.m_strip + (width * (sub.m_start - x))] = pixels[int(subpoint.x) + (width * int(subpoint.y))];
+        }
+      }
+      
+   
+      
+      
+    }
+    updatePixels();
+    
+  }
 }
 
