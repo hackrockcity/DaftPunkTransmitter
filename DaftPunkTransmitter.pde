@@ -27,20 +27,11 @@ String midiInputName = "IAC Bus 1";
 //String midiInputName = "Port 1";
 
 Pattern[] enabledRoutines = new Pattern[] {
-  // new Animator("anim-nyancat",1,.5,0,displayWidth+1,0),
  // new Bursts(), 
-  //  //  new Chase(),
-  //  new ColorDrop(), 
-  //  //  new DropTheBomb(),
-  //  new FFTDemo(), 
-  //  //  new Fire(),
-  //  //  new Greetz(),
-  //  new RGBRoutine(), 
-  //  new RainbowColors(), 
-  //  new Warp(null, true, false, 0.5, 0.5), 
-  //  new Warp(new WarpSpeedMrSulu(), false, true, 0.5, 0.5), 
-  //  new Waves(),
-  new WarpSpeedMrSulu()
+  
+   new RGBRoutine(), 
+ 
+  //new WarpSpeedMrSulu()
 };
 
 boolean leftProject = true;
