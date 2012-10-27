@@ -181,10 +181,10 @@ void defineRightRail() {
   RightRailSegments.add(new Segment("J5", BOX4 + 5, 104, 23, 26, 25));
   RightRailSegments.add(new Segment("J6", BOX4 + 5, 130, 24, 25, 17)); 
 
-  RightRailSegments.add(new Segment("K1", BOX4 + 6, 3, 24, 18, 17));   // Name, Strip, Offset, Length, StartPoint, EndPoint
-  RightRailSegments.add(new Segment("K2", BOX4 + 6, 29, 23, 17, 8));
-  RightRailSegments.add(new Segment("K3", BOX4 + 6, 53, 26, 8, 7));    // K is not mapped in physical space !!
-  RightRailSegments.add(new Segment("K4", BOX4 + 6, 80, 24, 7, 17)); 
-  RightRailSegments.add(new Segment("K5", BOX4 + 6, 107, 23, 17, 26));
+  RightRailSegments.add(new Segment("K1", BOX4 + 6, 0, 24, 18, 17));   // Name, Strip, Offset, Length, StartPoint, EndPoint
+  RightRailSegments.add(new Segment("K2", BOX4 + 6, 27, 23, 17, 8));
+  RightRailSegments.add(new Segment("K3", BOX4 + 6, 53, 23, 8, 7));    // K is not mapped in physical space !!
+  RightRailSegments.add(new Segment("K4", BOX4 + 6, 79, 23, 7, 17)); 
+  RightRailSegments.add(new Segment("K5", BOX4 + 6, 105, 24, 17, 26));
 }
 
