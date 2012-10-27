@@ -190,22 +190,22 @@ void draw() {
         if (m.m_pitch == 41) leftProject = !leftProject;
       }
       break;
-    case 2:
-      //        println("Adding flashes " + m.m_channel + " " + m.m_pitch + " " + m.m_velocity);
+    case 4:
+              println("Adding flashes " + m.m_channel + " " + m.m_pitch + " " + m.m_velocity);
 
       // Flashes
       activePatterns.add(new FlashPattern(m.m_channel, m.m_pitch, m.m_velocity));
       break;
 
       // What ever isn't mapped uses the brightness pattern
-    default:
-      activePatterns.add(
-      new RailSegmentBrightnessPattern(
-      m.m_channel, m.m_pitch, m.m_velocity
-        )
-        );
-
-      break;
+//    default:
+//      activePatterns.add(
+//      new RailSegmentBrightnessPattern(
+//      m.m_channel, m.m_pitch, m.m_velocity
+//        )
+//        );
+//
+//      break;
     }
   }
 
@@ -235,7 +235,7 @@ void draw() {
   line(displayWidth + 1, 0, displayWidth + 1, height);
   popStyle();
 
-  enabledRoutines[0].draw();
+//  enabledRoutines[0].draw();
 
   for (Pattern p : activePatterns) {
     p.draw();
