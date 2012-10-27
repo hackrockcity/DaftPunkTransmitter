@@ -66,9 +66,9 @@ class Segment {
 
   void draw(color c) {
     stroke(c);
-    println(m_name);
+    //println(m_name);
     for (SubSegment sub : subSegments) {
-      println("Strip: " + sub.m_strip + " Offset: " + sub.m_start + " Length: " + sub.m_length);
+      //println("Strip: " + sub.m_strip + " Offset: " + sub.m_start + " Length: " + sub.m_length);
       line(sub.m_strip, sub.m_start, sub.m_strip, sub.m_start + sub.m_length);
     }
   }

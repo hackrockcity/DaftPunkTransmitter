@@ -2,7 +2,7 @@ class RGBRoutine extends Pattern {
   int color_angle = 0;
   
   void draw() {
-    background(0);
+//    background(0);
   
     for (int row = 0; row < height; row++) {
       //for (int col = 0; col < width; col++) {
