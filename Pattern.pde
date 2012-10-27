@@ -12,6 +12,12 @@ class Pattern {
   
   Pattern() {}
   
+  void setup(PApplet parent){
+  }
+  
+  void reset() {
+  }
+  
   void draw() {
   }
 
