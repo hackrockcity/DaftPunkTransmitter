@@ -103,18 +103,18 @@ void defineLeftRail() {
   LeftRailSegments.add(new Segment("H5", BOX1 + 3, 107, 23, 7, 16));
   LeftRailSegments.add(new Segment("H6", BOX1 + 3, 132, 24, 16, 17)); 
 
-  LeftRailSegments.add(new Segment("J1", BOX1 + 3, 3, 24, 18, 8));   // Name, Strip, Offset, Length, StartPoint, EndPoint
-  LeftRailSegments.add(new Segment("J2", BOX1 + 3, 29, 23, 8, 9));
-  LeftRailSegments.add(new Segment("J3", BOX1 + 3, 53, 26, 9, 18));    // J is not mapped in physical space !!
-  LeftRailSegments.add(new Segment("J4", BOX1 + 3, 80, 24, 18, 26)); 
-  LeftRailSegments.add(new Segment("J5", BOX1 + 3, 107, 23, 26, 25));
-  LeftRailSegments.add(new Segment("J6", BOX1 + 3, 132, 24, 25, 17)); 
+  LeftRailSegments.add(new Segment("J1", BOX4 + 4, 1, 23, 18, 8));   // Name, Strip, Offset, Length, StartPoint, EndPoint
+  LeftRailSegments.add(new Segment("J2", BOX4 + 4, 25, 23, 8, 9));
+  LeftRailSegments.add(new Segment("J3", BOX4 + 4, 51, 23, 9, 18));    // J is not mapped in physical space !!
+  LeftRailSegments.add(new Segment("J4", BOX4 + 4, 79, 22, 18, 26)); 
+  LeftRailSegments.add(new Segment("J5", BOX4 + 4, 103, 23, 26, 25));
+  LeftRailSegments.add(new Segment("J6", BOX4 + 4, 128, 24, 25, 17)); 
 
-  LeftRailSegments.add(new Segment("K1", BOX1 + 8, 3, 24, 18, 17));   // Name, Strip, Offset, Length, StartPoint, EndPoint
-  LeftRailSegments.add(new Segment("K2", BOX1 + 8, 29, 23, 17, 8));
-  LeftRailSegments.add(new Segment("K3", BOX1 + 8, 53, 26, 8, 7));    // K is not mapped in physical space !!
-  LeftRailSegments.add(new Segment("K4", BOX1 + 8, 80, 24, 7, 17)); 
-  LeftRailSegments.add(new Segment("K5", BOX1 + 8, 107, 23, 17, 26));
+  LeftRailSegments.add(new Segment("K1", BOX4 + 7, 3, 23, 18, 17));   // Name, Strip, Offset, Length, StartPoint, EndPoint
+  LeftRailSegments.add(new Segment("K2", BOX4 + 7, 28, 22, 17, 8));
+  LeftRailSegments.add(new Segment("K3", BOX4 + 7, 53, 22, 8, 7));    // K is not mapped in physical space !!
+  LeftRailSegments.add(new Segment("K4", BOX4 + 7, 78, 24, 7, 17)); 
+  LeftRailSegments.add(new Segment("K5", BOX4 + 7, 104, 23, 17, 26));
 }
 //
 void defineRightRail() {
@@ -174,17 +174,17 @@ void defineRightRail() {
   RightRailSegments.add(new Segment("H5", BOX0 + 3, 80, 24, 6, 7)); 
   RightRailSegments.add(new Segment("H6", BOX0 + 3, 105, 23, 7, 16));
 
-//  RightRailSegments.add(new Segment("J1", BOX1 + 3, 3, 24, 18, 8));   // Name, Strip, Offset, Length, StartPoint, EndPoint
-//  RightRailSegments.add(new Segment("J2", BOX1 + 3, 29, 23, 8, 9));
-//  RightRailSegments.add(new Segment("J3", BOX1 + 3, 53, 26, 9, 18));    // J is not mapped in physical space !!
-//  RightRailSegments.add(new Segment("J4", BOX1 + 3, 80, 24, 18, 26)); 
-//  RightRailSegments.add(new Segment("J5", BOX1 + 3, 107, 23, 26, 25));
-//  RightRailSegments.add(new Segment("J6", BOX1 + 3, 132, 24, 25, 17)); 
+  RightRailSegments.add(new Segment("J1", BOX4 + 5, 0, 23, 18, 8));   // Name, Strip, Offset, Length, StartPoint, EndPoint
+  RightRailSegments.add(new Segment("J2", BOX4 + 5, 26, 22, 8, 9));
+  RightRailSegments.add(new Segment("J3", BOX4 + 5, 51, 24, 9, 18));    // J is not mapped in physical space !!
+  RightRailSegments.add(new Segment("J4", BOX4 + 5, 78, 24, 18, 26)); 
+  RightRailSegments.add(new Segment("J5", BOX4 + 5, 104, 23, 26, 25));
+  RightRailSegments.add(new Segment("J6", BOX4 + 5, 130, 24, 25, 17)); 
 
-//  RightRailSegments.add(new Segment("K1", BOX1 + 8, 3, 24, 18, 17));   // Name, Strip, Offset, Length, StartPoint, EndPoint
-//  RightRailSegments.add(new Segment("K2", BOX1 + 8, 29, 23, 17, 8));
-//  RightRailSegments.add(new Segment("K3", BOX1 + 8, 53, 26, 8, 7));    // K is not mapped in physical space !!
-//  RightRailSegments.add(new Segment("K4", BOX1 + 8, 80, 24, 7, 17)); 
-//  RightRailSegments.add(new Segment("K5", BOX1 + 8, 107, 23, 17, 26));
+  RightRailSegments.add(new Segment("K1", BOX4 + 6, 3, 24, 18, 17));   // Name, Strip, Offset, Length, StartPoint, EndPoint
+  RightRailSegments.add(new Segment("K2", BOX4 + 6, 29, 23, 17, 8));
+  RightRailSegments.add(new Segment("K3", BOX4 + 6, 53, 26, 8, 7));    // K is not mapped in physical space !!
+  RightRailSegments.add(new Segment("K4", BOX4 + 6, 80, 24, 7, 17)); 
+  RightRailSegments.add(new Segment("K5", BOX4 + 6, 107, 23, 17, 26));
 }
 
