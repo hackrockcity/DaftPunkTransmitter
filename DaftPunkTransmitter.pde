@@ -46,6 +46,9 @@ Pattern[] enabledRoutines = new Pattern[] {
 boolean leftProject = true;
 BitmapPattern leftRailBitmap;
 
+boolean rightProject = true;
+BitmapPattern rightRailBitmap;
+
 List<Segment> LeftRailSegments;
 Fixture leftRail;
 
@@ -155,13 +158,15 @@ void setup() {
   //  }
 
   leftRailBitmap = new BitmapPattern(leftRail);
+  rightRailBitmap = new BitmapPattern(rightRail);
 }
 
 void draw() {
   int segment;
 
   if (leftProject && !activePatterns.contains(leftRailBitmap)) activePatterns.add(leftRailBitmap);
-
+  if (rightProject && !activePatterns.contains(rightRailBitmap)) activePatterns.add(rightRailBitmap);
+  
   // Add any new patterns that might have arrived
   while (noteOnMessages.size () > 0) {
     MidiMessage m = noteOnMessages.poll();
