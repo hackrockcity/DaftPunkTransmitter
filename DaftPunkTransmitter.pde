@@ -153,6 +153,11 @@ void setup() {
   ws.m_pitch = 27;
   enabledPatterns.put("WarpSpeed", ws);
 
+  GridRoutine gr = new GridRoutine();
+  gr.m_channel = 9;
+  gr.m_pitch = 28;
+  enabledPatterns.put("GridRoutine", gr);
+
   for (Map.Entry r : enabledPatterns.entrySet()) {
     Pattern pat = (Pattern) r.getValue();
     pat.setup(this);
