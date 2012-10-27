@@ -24,6 +24,7 @@ int displayHeight = 160;                // 160 for full-height strips
 int FRAMERATE = 30;                     // larger number means faster updates
 float bright = 1;                       // Global brightness modifier
 String midiInputName = "IAC Bus 1";
+//String midiInputName = "Port 1";
 
 Pattern[] enabledRoutines = new Pattern[] {
   // new Animator("anim-nyancat",1,.5,0,displayWidth+1,0),
