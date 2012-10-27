@@ -54,7 +54,7 @@ void defineLeftRail() {
   LeftRailSegments.add(new Segment("A5", BOX1 + 0, 107, 25, 1, 0)); 
   LeftRailSegments.add(new Segment("A6", BOX1 + 0, 133, 24, 0, 10));
 
-  LeftRailSegments.add(new Segment("B1", BOX1 + 6, 8, 24, 4, 13));   // Name, Strip, Offset, Length, StartPoint, EndPoint
+  LeftRailSegments.add(new Segment("B1", BOX1 + 6, 2, 24, 4, 13));   // Name, Strip, Offset, Length, StartPoint, EndPoint
   LeftRailSegments.add(new Segment("B2", BOX1 + 6, 26, 23, 13, 21));
   LeftRailSegments.add(new Segment("B3", BOX1 + 6, 52, 24, 21, 12)); 
   LeftRailSegments.add(new Segment("B4", BOX1 + 6, 78, 24, 12, 2)); 
@@ -89,12 +89,12 @@ void defineLeftRail() {
   LeftRailSegments.add(new Segment("F5", BOX1 + 5, 107, 23, 25, 24));
   LeftRailSegments.add(new Segment("F6", BOX1 + 5, 132, 24, 24, 16)); 
 
-  LeftRailSegments.add(new Segment("G1", BOX1 + 4, 3, 24, 14, 5));   // Name, Strip, Offset, Length, StartPoint, EndPoint
-  LeftRailSegments.add(new Segment("G2", BOX1 + 4, 29, 23, 5, 15));
-  LeftRailSegments.add(new Segment("G3", BOX1 + 4, 53, 26, 15, 24));     // G is not mapped in physical space !!
-  LeftRailSegments.add(new Segment("G4", BOX1 + 4, 80, 24, 24, 23)); 
-  LeftRailSegments.add(new Segment("G5", BOX1 + 4, 107, 23, 23, 15));
-  LeftRailSegments.add(new Segment("G6", BOX1 + 4, 132, 24, 15, 16)); 
+  LeftRailSegments.add(new Segment("G1", BOX1 + 4, 0, 24, 14, 5));   // Name, Strip, Offset, Length, StartPoint, EndPoint
+  LeftRailSegments.add(new Segment("G2", BOX1 + 4, 26, 23, 5, 15));
+  LeftRailSegments.add(new Segment("G3", BOX1 + 4, 52, 24, 15, 24));     // G is not mapped in physical space !!
+  LeftRailSegments.add(new Segment("G4", BOX1 + 4, 77, 24, 24, 23)); 
+  LeftRailSegments.add(new Segment("G5", BOX1 + 4, 101, 23, 23, 15));
+  LeftRailSegments.add(new Segment("G6", BOX1 + 4, 127, 24, 15, 16)); 
 
   LeftRailSegments.add(new Segment("H1", BOX1 + 3, 3, 24, 14, 4));   // Name, Strip, Offset, Length, StartPoint, EndPoint
   LeftRailSegments.add(new Segment("H2", BOX1 + 3, 29, 23, 4, 5));
