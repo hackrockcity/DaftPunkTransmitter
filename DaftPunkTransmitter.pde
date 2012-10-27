@@ -19,14 +19,16 @@ int displayHeight = 160;                // 160 for full-height strips
 int FRAMERATE = 30;                     // larger number means faster updates
 float bright = 1;                       // Global brightness modifier
 String midiInputName = "IAC Bus 1";
+//String midiInputName = "Port 1";
 
 List<Segment> LeftRailSegments;
+List<Segment> RightRailSegments;
 
-int BOX1=0;
-int BOX2=8;
-int BOX3=16;
-int BOX4=24;
-int BOX5=32;
+int BOX0=0;
+int BOX1=8;
+int BOX2=16;
+int BOX3=24;
+int BOX4=32;
 
 public color[] channelColors = new color[] {
       color(255,0,0), 
@@ -89,6 +91,7 @@ void setup() {
   
   // Add the left rails
   defineLeftRail();
+  defineRightRail();
 }
 
 void draw() {
@@ -100,21 +103,23 @@ void draw() {
     switch(m.m_channel) {
       case 1:
         // Strips
-        println("Adding line pattern " + m.m_channel + " " + m.m_pitch + " " + m.m_velocity);
+//        println("Adding line pattern " + m.m_channel + " " + m.m_pitch + " " + m.m_velocity);
         activePatterns.add(new LinePattern(m.m_channel, m.m_pitch, m.m_velocity));
         break;
       case 0:
         // Segments
-        println("Adding rail segment pattern " + m.m_channel + " " + m.m_pitch + " " + m.m_velocity);
+//        println("Adding rail segment pattern " + m.m_channel + " " + m.m_pitch + " " + m.m_velocity);
 
         segment = m.m_pitch - 36;
 
         if (segment >= 0 && segment < LeftRailSegments.size()) {
           activePatterns.add(new RailSegmentPattern(LeftRailSegments.get(segment),m.m_channel, m.m_pitch, m.m_velocity));
+          activePatterns.add(new RailSegmentPattern(RightRailSegments.get(segment),m.m_channel, m.m_pitch, m.m_velocity));
+
         }
         break;
       case 2:
-        println("Adding flashes " + m.m_channel + " " + m.m_pitch + " " + m.m_velocity);
+//        println("Adding flashes " + m.m_channel + " " + m.m_pitch + " " + m.m_velocity);
 
         // Flashes
         activePatterns.add(new FlashPattern(m.m_channel, m.m_pitch, m.m_velocity));
