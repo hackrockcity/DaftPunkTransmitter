@@ -1,5 +1,7 @@
 class RGBRoutine extends Pattern {
   int color_angle = 0;
+  int rwidth = 700;
+  int rheight = 500;
   
   void draw() {
 //    background(0);
@@ -12,7 +14,7 @@ class RGBRoutine extends Pattern {
         
         stroke(r,g,b);
         //point(,row);
-        line(displayWidth + 1, row, width, row);
+        rect(displayWidth + 1, row, rwidth, 3);
       //}
     }
     
