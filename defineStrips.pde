@@ -22,13 +22,13 @@ void defineLeftTrapazoid() {
 }
 
 void defineCenterTrapazoid() {
-        RightTrapazoidSegments = new LinkedList<Segment>();
-        RightTrapazoidSegments.add(new Segment(0, BOX3 + 0, 0, 160));
-        RightTrapazoidSegments.add(new Segment(0, BOX3 + 1, 0, 160));
-        RightTrapazoidSegments.add(new Segment(0, BOX3 + 2, 0, 160));
-        RightTrapazoidSegments.add(new Segment(0, BOX3 + 3, 0, 160));
-        RightTrapazoidSegments.add(new Segment(0, BOX3 + 6, 0, 160));
-        RightTrapazoidSegments.add(new Segment(0, BOX3 + 7, 0, 160));
+        CenterTrapazoidSegments = new LinkedList<Segment>();
+        CenterTrapazoidSegments.add(new Segment(0, BOX3 + 0, 0, 160));
+        CenterTrapazoidSegments.add(new Segment(0, BOX3 + 1, 0, 160));
+        CenterTrapazoidSegments.add(new Segment(0, BOX3 + 2, 0, 160));
+        CenterTrapazoidSegments.add(new Segment(0, BOX3 + 3, 0, 160));
+        CenterTrapazoidSegments.add(new Segment(0, BOX3 + 6, 0, 160));
+        CenterTrapazoidSegments.add(new Segment(0, BOX3 + 7, 0, 160));
 //        CenterTrapazoidSegments = new LinkedList<Segment>();
 //        CenterTrapazoidSegments.add(new Segment(0, BOX3 + 3, 154, -44));    // Num, Strip, Start LED, Length (negative means backwards)
 //        CenterTrapazoidSegments.add(new Segment(1, BOX3 + 3, 59, 46));
