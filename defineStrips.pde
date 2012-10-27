@@ -117,74 +117,74 @@ void defineLeftRail() {
   LeftRailSegments.add(new Segment("K5", BOX1 + 8, 107, 23, 17, 26));
 }
 //
-//void defineRightRail() {
-//  RightRailSegments = new LinkedList<Segment>();		     // Name, [ Physical Space    ]  [     2D space     ]
-//  RightRailSegments.add(new Segment("A2", BOX1 + 0, 29, 24, 4, 3));   // Name, Strip, Offset, Length, StartPoint, EndPoint
-//  RightRailSegments.add(new Segment("A3", BOX1 + 0, 55, 24, 3, 2));
-//  RightRailSegments.add(new Segment("A4", BOX1 + 0, 81, 25, 2, 1)); 
-//  RightRailSegments.add(new Segment("A5", BOX1 + 0, 107, 25, 1, 0)); 
-//  RightRailSegments.add(new Segment("A6", BOX1 + 0, 133, 24, 0, 10));
-//
-//  RightRailSegments.add(new Segment("B1", BOX1 + 6, 8, 24, 4, 13));   // Name, Strip, Offset, Length, StartPoint, EndPoint
-//  RightRailSegments.add(new Segment("B2", BOX1 + 6, 26, 23, 13, 21));
-//  RightRailSegments.add(new Segment("B3", BOX1 + 6, 52, 24, 21, 12)); 
-//  RightRailSegments.add(new Segment("B4", BOX1 + 6, 78, 24, 12, 2)); 
-//  RightRailSegments.add(new Segment("B5", BOX1 + 6, 104, 24, 2, 11));
-//  RightRailSegments.add(new Segment("B6", BOX1 + 6, 130, 24, 11, 19)); 
-//
-//  RightRailSegments.add(new Segment("C1", BOX1 + 1, 4, 24, 14, 13));   // Name, Strip, Offset, Length, StartPoint, EndPoint
-//  RightRailSegments.add(new Segment("C2", BOX1 + 1, 31, 24, 13, 12));
-//  RightRailSegments.add(new Segment("C3", BOX1 + 1, 56, 25, 12, 11)); 
-//  RightRailSegments.add(new Segment("C4", BOX1 + 1, 83, 23, 11, 10)); 
-//  RightRailSegments.add(new Segment("C5", BOX1 + 1, 110, 23, 10, 1));
-//  RightRailSegments.add(new Segment("C6", BOX1 + 1, 138, 23, 1, 11)); 
-//
-//  RightRailSegments.add(new Segment("D1", BOX1 + 2, 4, 24, 14, 22));   // Name, Strip, Offset, Length, StartPoint, EndPoint
-//  RightRailSegments.add(new Segment("D2", BOX1 + 2, 29, 24, 22, 13));
-//  RightRailSegments.add(new Segment("D3", BOX1 + 2, 54, 24, 13, 3)); 
-//  RightRailSegments.add(new Segment("D4", BOX1 + 2, 81, 23, 3, 12)); 
-//  RightRailSegments.add(new Segment("D5", BOX1 + 2, 107, 24, 12, 20));
-//  RightRailSegments.add(new Segment("D6", BOX1 + 2, 132, 24, 20, 11)); 
-//
-//  RightRailSegments.add(new Segment("E1", BOX1 + 7, 3, 24, 14, 23));   // Name, Strip, Offset, Length, StartPoint, EndPoint
-//  RightRailSegments.add(new Segment("E2", BOX1 + 7, 29, 25, 23, 22));
-//  RightRailSegments.add(new Segment("E3", BOX1 + 7, 55, 24, 22, 21)); 
-//  RightRailSegments.add(new Segment("E4", BOX1 + 7, 80, 26, 21, 20)); 
-//  RightRailSegments.add(new Segment("E5", BOX1 + 7, 107, 25, 20, 19));
-//  RightRailSegments.add(new Segment("E6", BOX1 + 7, 132, 23, 19, 10)); 
-//
-//  RightRailSegments.add(new Segment("F1", BOX1 + 3, 3, 24, 14, 15));   // Name, Strip, Offset, Length, StartPoint, EndPoint
-//  RightRailSegments.add(new Segment("F2", BOX1 + 3, 29, 23, 15, 6));
-//  RightRailSegments.add(new Segment("F3", BOX1 + 3, 53, 26, 6, 16));    // F is not mapped in physical space !!
-//  RightRailSegments.add(new Segment("F4", BOX1 + 3, 80, 24, 16, 25)); 
-//  RightRailSegments.add(new Segment("F5", BOX1 + 3, 107, 23, 25, 24));
-//  RightRailSegments.add(new Segment("F6", BOX1 + 3, 132, 24, 24, 16)); 
-//
-//  RightRailSegments.add(new Segment("G1", BOX1 + 3, 3, 24, 14, 5));   // Name, Strip, Offset, Length, StartPoint, EndPoint
-//  RightRailSegments.add(new Segment("G2", BOX1 + 3, 29, 23, 5, 15));
-//  RightRailSegments.add(new Segment("G3", BOX1 + 3, 53, 26, 15, 24));     // G is not mapped in physical space !!
-//  RightRailSegments.add(new Segment("G4", BOX1 + 3, 80, 24, 24, 23)); 
-//  RightRailSegments.add(new Segment("G5", BOX1 + 3, 107, 23, 23, 15));
-//  RightRailSegments.add(new Segment("G6", BOX1 + 3, 132, 24, 15, 16)); 
-//
-//  RightRailSegments.add(new Segment("H1", BOX1 + 3, 3, 24, 14, 4));   // Name, Strip, Offset, Length, StartPoint, EndPoint
-//  RightRailSegments.add(new Segment("H2", BOX1 + 3, 29, 23, 4, 5));
-//  RightRailSegments.add(new Segment("H3", BOX1 + 3, 53, 26, 5, 6)); 
-//  RightRailSegments.add(new Segment("H4", BOX1 + 3, 80, 24, 6, 7)); 
-//  RightRailSegments.add(new Segment("H5", BOX1 + 3, 107, 23, 7, 16));
-//  RightRailSegments.add(new Segment("H6", BOX1 + 3, 132, 24, 16, 17)); 
-//
+void defineRightRail() {
+  RightRailSegments = new LinkedList<Segment>();		     // Name, [ Physical Space    ]  [     2D space     ]
+  RightRailSegments.add(new Segment("A2", BOX0 + 0, 23, 26, 4, 3));   // Name, Strip, Offset, Length, StartPoint, EndPoint
+  RightRailSegments.add(new Segment("A3", BOX0 + 0, 51, 22, 3, 2));
+  RightRailSegments.add(new Segment("A4", BOX0 + 0, 78, 23, 2, 1)); 
+  RightRailSegments.add(new Segment("A5", BOX0 + 0, 105, 24, 1, 0)); 
+  RightRailSegments.add(new Segment("A6", BOX0 + 0, 130, 22, 0, 10));
+
+  RightRailSegments.add(new Segment("B1", BOX0 + 6, 0, 24, 4, 13));   // Name, Strip, Offset, Length, StartPoint, EndPoint
+  RightRailSegments.add(new Segment("B2", BOX0 + 6, 26, 24, 13, 21));
+  RightRailSegments.add(new Segment("B3", BOX0 + 6, 52, 24, 21, 12)); 
+  RightRailSegments.add(new Segment("B4", BOX0 + 6, 78, 24, 12, 2)); 
+  RightRailSegments.add(new Segment("B5", BOX0 + 6, 104, 24, 2, 11));
+  RightRailSegments.add(new Segment("B6", BOX0 + 6, 130, 24, 11, 19)); 
+
+  RightRailSegments.add(new Segment("C1", BOX0 + 1, 1, 24, 14, 13));   // Name, Strip, Offset, Length, StartPoint, EndPoint
+  RightRailSegments.add(new Segment("C2", BOX0 + 1, 28, 24, 13, 12));
+  RightRailSegments.add(new Segment("C3", BOX0 + 1, 54, 24, 12, 11)); 
+  RightRailSegments.add(new Segment("C4", BOX0 + 1, 81, 23, 11, 10)); 
+  RightRailSegments.add(new Segment("C5", BOX0 + 1, 111, 19, 10, 1));
+  RightRailSegments.add(new Segment("C6", BOX0 + 1, 134, 23, 1, 11)); 
+
+  RightRailSegments.add(new Segment("D1", BOX0 + 2, 2, 24, 14, 22));   // Name, Strip, Offset, Length, StartPoint, EndPoint
+  RightRailSegments.add(new Segment("D2", BOX0 + 2, 29, 24, 22, 13));
+  RightRailSegments.add(new Segment("D3", BOX0 + 2, 54, 24, 13, 3)); 
+  RightRailSegments.add(new Segment("D4", BOX0 + 2, 81, 23, 3, 12)); 
+  RightRailSegments.add(new Segment("D5", BOX0 + 2, 107, 23, 12, 20));
+  RightRailSegments.add(new Segment("D6", BOX0 + 2, 132, 24, 20, 11)); 
+
+  RightRailSegments.add(new Segment("E1", BOX0 + 7, 0, 22, 14, 23));   // Name, Strip, Offset, Length, StartPoint, EndPoint
+  RightRailSegments.add(new Segment("E2", BOX0 + 7, 24, 25, 23, 22));
+  RightRailSegments.add(new Segment("E3", BOX0 + 7, 52, 24, 22, 21)); 
+  RightRailSegments.add(new Segment("E4", BOX0 + 7, 78, 26, 21, 20)); 
+  RightRailSegments.add(new Segment("E5", BOX0 + 7, 106, 23, 20, 19));
+  RightRailSegments.add(new Segment("E6", BOX0 + 7, 132, 23, 19, 10)); 
+
+  RightRailSegments.add(new Segment("F1", BOX0 + 5, 6, 24, 14, 15));   // Name, Strip, Offset, Length, StartPoint, EndPoint
+  RightRailSegments.add(new Segment("F2", BOX0 + 5, 33, 23, 15, 6));
+  RightRailSegments.add(new Segment("F3", BOX0 + 5, 59, 24, 6, 16));    // F is not mapped in physical space !!
+  RightRailSegments.add(new Segment("F4", BOX0 + 5, 85, 24, 16, 25)); 
+  RightRailSegments.add(new Segment("F5", BOX0 + 5, 111, 23, 25, 24));
+  RightRailSegments.add(new Segment("F6", BOX0 + 5, 135, 24, 24, 16)); 
+
+  RightRailSegments.add(new Segment("G1", BOX0 + 4, 3, 23, 14, 5));   // Name, Strip, Offset, Length, StartPoint, EndPoint
+  RightRailSegments.add(new Segment("G2", BOX0 + 4, 29, 23, 5, 15));
+  RightRailSegments.add(new Segment("G3", BOX0 + 4, 100, 23, 23, 15));
+  RightRailSegments.add(new Segment("G4", BOX0 + 4, 78, 22, 24, 23)); 
+  RightRailSegments.add(new Segment("G5", BOX0 + 4, 55, 22, 15, 24));     // G is not mapped in physical space !!
+  RightRailSegments.add(new Segment("G6", BOX0 + 4, 126, 24, 15, 16)); 
+
+  RightRailSegments.add(new Segment("H1", BOX0 + 0, 0, 22, 14, 4));   // Name, Strip, Offset, Length, StartPoint, EndPoint
+  RightRailSegments.add(new Segment("H2", BOX0 + 3, 1, 24, 14, 4));
+  RightRailSegments.add(new Segment("H3", BOX0 + 3, 27, 24, 4, 5));
+  RightRailSegments.add(new Segment("H4", BOX0 + 3, 54, 23, 5, 6)); 
+  RightRailSegments.add(new Segment("H5", BOX0 + 3, 80, 24, 6, 7)); 
+  RightRailSegments.add(new Segment("H6", BOX0 + 3, 105, 23, 7, 16));
+
 //  RightRailSegments.add(new Segment("J1", BOX1 + 3, 3, 24, 18, 8));   // Name, Strip, Offset, Length, StartPoint, EndPoint
 //  RightRailSegments.add(new Segment("J2", BOX1 + 3, 29, 23, 8, 9));
 //  RightRailSegments.add(new Segment("J3", BOX1 + 3, 53, 26, 9, 18));    // J is not mapped in physical space !!
 //  RightRailSegments.add(new Segment("J4", BOX1 + 3, 80, 24, 18, 26)); 
 //  RightRailSegments.add(new Segment("J5", BOX1 + 3, 107, 23, 26, 25));
 //  RightRailSegments.add(new Segment("J6", BOX1 + 3, 132, 24, 25, 17)); 
-//
-//  RightRailSegments.add(new Segment("K1", BOX1 + 3, 3, 24, 18, 17));   // Name, Strip, Offset, Length, StartPoint, EndPoint
-//  RightRailSegments.add(new Segment("K2", BOX1 + 3, 29, 23, 17, 8));
-//  RightRailSegments.add(new Segment("K3", BOX1 + 3, 53, 26, 8, 7));    // K is not mapped in physical space !!
-//  RightRailSegments.add(new Segment("K4", BOX1 + 3, 80, 24, 7, 17)); 
-//  RightRailSegments.add(new Segment("K5", BOX1 + 3, 107, 23, 17, 26));
-//}
+
+//  RightRailSegments.add(new Segment("K1", BOX1 + 8, 3, 24, 18, 17));   // Name, Strip, Offset, Length, StartPoint, EndPoint
+//  RightRailSegments.add(new Segment("K2", BOX1 + 8, 29, 23, 17, 8));
+//  RightRailSegments.add(new Segment("K3", BOX1 + 8, 53, 26, 8, 7));    // K is not mapped in physical space !!
+//  RightRailSegments.add(new Segment("K4", BOX1 + 8, 80, 24, 7, 17)); 
+//  RightRailSegments.add(new Segment("K5", BOX1 + 8, 107, 23, 17, 26));
+}
 
