@@ -26,12 +26,19 @@ float bright = 1;                       // Global brightness modifier
 String midiInputName = "IAC Bus 1";
 //String midiInputName = "Port 1";
 
+long modeFrameStart;
+
+
 Pattern[] enabledRoutines = new Pattern[] {
  // new Bursts(), 
   
-   new RGBRoutine(), 
+ //  new RGBRoutine(), 
+   
+//   new ColorDrop(), 
  
   //new WarpSpeedMrSulu()
+  
+  new RainbowColors(),
 };
 
 boolean leftProject = true;
@@ -150,6 +157,8 @@ void setup() {
 
   leftRailBitmap = new BitmapPattern(leftRail);
   rightRailBitmap = new BitmapPattern(rightRail);
+  
+  modeFrameStart = frameCount;
 }
 
 void draw() {
