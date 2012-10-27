@@ -204,6 +204,9 @@ void draw() {
   fill(255);
   noStroke();
   rect(rectX - 50, rectY - 50, 100, 100);
+  strokeWeight(1);
+  stroke(255);
+  line(displayWidth + 1, 0, displayWidth + 1, height);
   popStyle();
   
   for (Pattern p : activePatterns) {
