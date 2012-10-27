@@ -14,8 +14,6 @@ class LinePattern extends Pattern {
       stroke(color(0,0,255));
     }
     line(m_pitch-60, 0, m_pitch-60, displayHeight);
-    
-    m_isDone = true;
   }
 }
 

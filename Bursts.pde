@@ -80,6 +80,7 @@ class Burst {
   
   public void draw_ellipse(float x, float y, float widt, float heigh, color c) {
     while(widt > 1 && heigh > 1) {
+      pushStyle();
       float target_brightness = random(.8,1.5);
       c = color(red(c)*target_brightness, green(c)*target_brightness, blue(c)*target_brightness);
       fill(c);
@@ -89,6 +90,7 @@ class Burst {
       ellipse(x, y, widt, heigh);
       widt -= 1;
       heigh -= 1;
+      popStyle();
     }
   }
   

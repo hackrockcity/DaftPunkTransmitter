@@ -21,8 +21,6 @@ class RailSegmentPattern extends Pattern {
       c = color(0,255,255);
     }
     m_segment.draw(c);
-    
-    m_isDone = true;
   }
 }
 

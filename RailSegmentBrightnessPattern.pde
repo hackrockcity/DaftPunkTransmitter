@@ -41,8 +41,6 @@ class RailSegmentBrightnessPattern extends Pattern {
     if (m_segment != null) {
       m_segment.draw(m_color);    
     }
-    
-    m_isDone = true;
   }
 }
 

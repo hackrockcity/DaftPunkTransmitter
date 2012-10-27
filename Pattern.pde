@@ -1,5 +1,4 @@
 class Pattern {
-  public boolean m_isDone = false;
   public int m_channel;
   public int m_pitch;
   public int m_velocity;
