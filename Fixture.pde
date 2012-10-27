@@ -24,11 +24,12 @@ class Fixture {
        segment.project();
     }
     
+    pushStyle();
     noFill();
     stroke(255);
     strokeWeight(2);
     rect(point.x - 5, point.y - 5, (fix_width - point.x) + 5, (fix_height - point.y) + 5);
-    
+    popStyle();
   }
 }
 

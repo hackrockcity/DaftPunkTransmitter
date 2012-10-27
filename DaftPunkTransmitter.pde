@@ -51,8 +51,8 @@ int BOX4=32;
 
 int strips = 40;
 
-int rectX = 0;
-int rectY = 0;
+int rectX = 100;
+int rectY = 100;
 
 
 public color[] channelColors = new color[] {
@@ -116,20 +116,20 @@ void setup() {
   leftRail = new Fixture(LeftRailSegments, new PVector(100, 0));
   
   if (!duplicateRails) {
-   // defineRightRail();
-   // rightRail = new Fixture(RightRailSegments, new PVector(750, 0));
+    defineRightRail();
+    rightRail = new Fixture(RightRailSegments, new PVector(750, 0));
   }
-
-  defineLeftTrapazoid();
-  leftTrapazoid = new Fixture(LeftTrapazoidSegments, new PVector(250, 200)); 
   
-  if (!duplicateTrapazoids) {
-    defineCenterTrapazoid();
-    centerTrapazoid = new Fixture(CenterTrapazoidSegments, new PVector(600, 200));
-  
-    defineRightTrapazoid();
-    rightTrapazoid = new Fixture(RightTrapazoidSegments, new PVector(950, 200));
-  }
+//  defineLeftTrapazoid();
+//  leftTrapazoid = new Fixture(LeftTrapazoidSegments, new PVector(250, 200)); 
+//  
+//  if (!duplicateTrapazoids) {
+//    defineCenterTrapazoid();
+//    centerTrapazoid = new Fixture(CenterTrapazoidSegments, new PVector(600, 200));
+//  
+//    defineRightTrapazoid();
+//    rightTrapazoid = new Fixture(RightTrapazoidSegments, new PVector(950, 200));
+//  }
   
   leftRailBitmap = new BitmapPattern(leftRail);
   
@@ -200,8 +200,11 @@ void draw() {
   
   background(0);
   
+  pushStyle();
   fill(255);
+  noStroke();
   rect(rectX - 50, rectY - 50, 100, 100);
+  popStyle();
   
   for (Pattern p : activePatterns) {
     p.draw();

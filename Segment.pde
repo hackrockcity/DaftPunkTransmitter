@@ -88,10 +88,6 @@ class Segment {
           pixels[sub.m_strip + (width * (sub.m_start - x))] = pixels[int(subpoint.x) + (width * int(subpoint.y))];
         }
       }
-      
-   
-      
-      
     }
     updatePixels();
     
