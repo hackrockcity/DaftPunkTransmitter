@@ -3,8 +3,9 @@ class FlashPattern extends Pattern {
   int m_pitch;
   
   FlashPattern(int channel, int pitch, int velocity) {
-    super(channel, pitch, velocity);
+    //super(channel, pitch, velocity);
     m_pitch = pitch;
+    println("Flash pitch " + m_pitch);
   }
   
   void draw() {

@@ -222,7 +222,7 @@ void draw() {
       for (Map.Entry p : enabledPatterns.entrySet()) {
         Pattern pat = (Pattern) p.getValue();
         if (pat.m_channel == m.m_channel && pat.m_pitch == m.m_pitch && !activePatterns.contains(pat)) {
-          activePatterns.add(pat);
+          priorityPatterns.add(pat);
         }
       }
       break;
@@ -239,10 +239,6 @@ void draw() {
     }
   }
   
-
- 
-
-  //if (!leftProject) activePatterns.remove(leftRailBitmap);
 
   while (noteOffMessages.size () > 0) {
     MidiMessage m = noteOffMessages.poll();
@@ -270,14 +266,14 @@ void draw() {
 
   // TODO: Remove any old patterns that might have disappeared
 
-  pushStyle();
-  fill(255);
-  noStroke();
-  rect(rectX - 50, rectY - 50, 100, 100);
-  strokeWeight(1);
-  stroke(255);
-  line(displayWidth + 1, 0, displayWidth + 1, height);
-  popStyle();
+//  pushStyle();
+//  fill(255);
+//  noStroke();
+//  rect(rectX - 50, rectY - 50, 100, 100);
+//  strokeWeight(1);
+//  stroke(255);
+//  line(displayWidth + 1, 0, displayWidth + 1, height);
+//  popStyle();
 
 
   for (Pattern p : activePatterns) {
