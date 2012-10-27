@@ -55,6 +55,9 @@ Fixture rightRail;
 Fixture combinedRails;
 BitmapPattern combinedBitmap;
 
+Fixture combinedTrapazoids;
+BitmapPattern combinedTrapBitmap;
+
 List<Segment> LeftTrapazoidSegments;
 Fixture leftTrapazoid;
 
@@ -162,20 +165,15 @@ void setup() {
    combinedRails = new Fixture(LeftRailSegments, RightRailSegments, new PVector(100, 000));
   
 
-  //  defineLeftTrapazoid();
-  //  leftTrapazoid = new Fixture(LeftTrapazoidSegments, new PVector(250, 200)); 
-  //  
-  //  if (!duplicateTrapazoids) {
-  //    defineCenterTrapazoid();
-  //    centerTrapazoid = new Fixture(CenterTrapazoidSegments, new PVector(600, 200));
-  //  
-  //    defineRightTrapazoid();
-  //    rightTrapazoid = new Fixture(RightTrapazoidSegments, new PVector(950, 200));
-  //  }
+  defineLeftTrapazoid();
+  defineCenterTrapazoid();
+  defineRightTrapazoid();
 
-//  leftRailBitmap = new BitmapPattern(leftRail);
-//  rightRailBitmap = new BitmapPattern(rightRail);
+  combinedTrapazoids = new Fixture(LeftTrapazoidSegments, CenterTrapazoidSegments, RightTrapazoidSegments, new PVector(250, 200));
+
+
   combinedBitmap = new BitmapPattern(combinedRails);
+  combinedTrapBitmap = new BitmapPattern(combinedTrapazoids);
 
   modeFrameStart = frameCount;
 }
@@ -288,6 +286,7 @@ void draw() {
   }
   
   combinedBitmap.draw();
+  combinedTrapBitmap.draw();
    
   for (Pattern p : priorityPatterns) {
     println(p);
