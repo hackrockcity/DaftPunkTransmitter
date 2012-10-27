@@ -2,47 +2,67 @@
 
 void defineLeftTrapazoid() {
 	LeftTrapazoidSegments = new LinkedList<Segment>();
-        LeftTrapazoidSegments.add(new Segment(0, BOX4 + 3, 154, -44));    // Num, Strip, Start LED, Length (negative means backwards)
-        LeftTrapazoidSegments.add(new Segment(1, BOX4 + 3, 59, 46));
-        LeftTrapazoidSegments.add(new Segment(2, BOX4 + 3, 54, -50));
-        LeftTrapazoidSegments.add(new Segment(3, BOX4 + 2, 159, -50));
-        LeftTrapazoidSegments.add(new Segment(4, BOX4 + 2, 51, 52));
-        LeftTrapazoidSegments.add(new Segment(5, BOX4 + 1, 157, 2, BOX4 + 2, 0, 50));
-        LeftTrapazoidSegments.add(new Segment(6, BOX4 + 1, 153, -55));
-        LeftTrapazoidSegments.add(new Segment(7, BOX4 + 1, 39, 57));
-        LeftTrapazoidSegments.add(new Segment(8, BOX4 + 1, 34, -34, BOX4 + 0, 159, -23));
-        LeftTrapazoidSegments.add(new Segment(9, BOX4 + 0, 71, 62));
-        LeftTrapazoidSegments.add(new Segment(10, BOX4 + 0, 64, -64));
+        LeftTrapazoidSegments.add(new Segment(0, BOX2 + 0, 0, 160));
+        LeftTrapazoidSegments.add(new Segment(0, BOX2 + 1, 0, 160));
+        LeftTrapazoidSegments.add(new Segment(0, BOX2 + 2, 0, 160));
+        LeftTrapazoidSegments.add(new Segment(0, BOX2 + 3, 0, 160));
+        LeftTrapazoidSegments.add(new Segment(0, BOX2 + 6, 0, 160));
+        LeftTrapazoidSegments.add(new Segment(0, BOX2 + 7, 0, 160));
+//        LeftTrapazoidSegments.add(new Segment(0, BOX4 + 3, 154, -44));    // Num, Strip, Start LED, Length (negative means backwards)
+//        LeftTrapazoidSegments.add(new Segment(1, BOX4 + 3, 59, 46));
+//        LeftTrapazoidSegments.add(new Segment(2, BOX4 + 3, 54, -50));
+//        LeftTrapazoidSegments.add(new Segment(3, BOX4 + 2, 159, -50));
+//        LeftTrapazoidSegments.add(new Segment(4, BOX4 + 2, 51, 52));
+//        LeftTrapazoidSegments.add(new Segment(5, BOX4 + 1, 157, 2, BOX4 + 2, 0, 50));
+//        LeftTrapazoidSegments.add(new Segment(6, BOX4 + 1, 153, -55));
+//        LeftTrapazoidSegments.add(new Segment(7, BOX4 + 1, 39, 57));
+//        LeftTrapazoidSegments.add(new Segment(8, BOX4 + 1, 34, -34, BOX4 + 0, 159, -23));
+//        LeftTrapazoidSegments.add(new Segment(9, BOX4 + 0, 71, 62));
+//        LeftTrapazoidSegments.add(new Segment(10, BOX4 + 0, 64, -64));
 }
 
 void defineCenterTrapazoid() {
-        CenterTrapazoidSegments = new LinkedList<Segment>();
-        CenterTrapazoidSegments.add(new Segment(0, BOX3 + 3, 154, -44));    // Num, Strip, Start LED, Length (negative means backwards)
-        CenterTrapazoidSegments.add(new Segment(1, BOX3 + 3, 59, 46));
-        CenterTrapazoidSegments.add(new Segment(2, BOX3 + 3, 54, -50));
-        CenterTrapazoidSegments.add(new Segment(3, BOX3 + 2, 159, -50));
-        CenterTrapazoidSegments.add(new Segment(4, BOX3 + 2, 51, 52));
-        CenterTrapazoidSegments.add(new Segment(5, BOX3 + 1, 157, 2, BOX4 + 2, 0, 50));
-        CenterTrapazoidSegments.add(new Segment(6, BOX3 + 1, 153, -55));
-        CenterTrapazoidSegments.add(new Segment(7, BOX3 + 1, 39, 57));
-        CenterTrapazoidSegments.add(new Segment(8, BOX3 + 1, 34, -34, BOX4 + 0, 159, -23));
-        CenterTrapazoidSegments.add(new Segment(9, BOX3 + 0, 71, 62));
-        CenterTrapazoidSegments.add(new Segment(10, BOX3 + 0, 64, -64));
+        RightTrapazoidSegments = new LinkedList<Segment>();
+        RightTrapazoidSegments.add(new Segment(0, BOX3 + 0, 0, 160));
+        RightTrapazoidSegments.add(new Segment(0, BOX3 + 1, 0, 160));
+        RightTrapazoidSegments.add(new Segment(0, BOX3 + 2, 0, 160));
+        RightTrapazoidSegments.add(new Segment(0, BOX3 + 3, 0, 160));
+        RightTrapazoidSegments.add(new Segment(0, BOX3 + 6, 0, 160));
+        RightTrapazoidSegments.add(new Segment(0, BOX3 + 7, 0, 160));
+//        CenterTrapazoidSegments = new LinkedList<Segment>();
+//        CenterTrapazoidSegments.add(new Segment(0, BOX3 + 3, 154, -44));    // Num, Strip, Start LED, Length (negative means backwards)
+//        CenterTrapazoidSegments.add(new Segment(1, BOX3 + 3, 59, 46));
+//        CenterTrapazoidSegments.add(new Segment(2, BOX3 + 3, 54, -50));
+//        CenterTrapazoidSegments.add(new Segment(3, BOX3 + 2, 159, -50));
+//        CenterTrapazoidSegments.add(new Segment(4, BOX3 + 2, 51, 52));
+//        CenterTrapazoidSegments.add(new Segment(5, BOX3 + 1, 157, 2, BOX4 + 2, 0, 50));
+//        CenterTrapazoidSegments.add(new Segment(6, BOX3 + 1, 153, -55));
+//        CenterTrapazoidSegments.add(new Segment(7, BOX3 + 1, 39, 57));
+//        CenterTrapazoidSegments.add(new Segment(8, BOX3 + 1, 34, -34, BOX4 + 0, 159, -23));
+//        CenterTrapazoidSegments.add(new Segment(9, BOX3 + 0, 71, 62));
+//        CenterTrapazoidSegments.add(new Segment(10, BOX3 + 0, 64, -64));
 }
 
 void defineRightTrapazoid() {
         RightTrapazoidSegments = new LinkedList<Segment>();
-        RightTrapazoidSegments.add(new Segment(0, BOX4 + 3, 154, -44));    // Num, Strip, Start LED, Length (negative means backwards)
-        RightTrapazoidSegments.add(new Segment(1, BOX4 + 3, 59, 46));
-        RightTrapazoidSegments.add(new Segment(2, BOX4 + 3, 54, -50));
-        RightTrapazoidSegments.add(new Segment(3, BOX4 + 2, 159, -50));
-        RightTrapazoidSegments.add(new Segment(4, BOX4 + 2, 51, 52));
-        RightTrapazoidSegments.add(new Segment(5, BOX4 + 1, 157, 2, BOX4 + 2, 0, 50));
-        RightTrapazoidSegments.add(new Segment(6, BOX4 + 1, 153, -55));
-        RightTrapazoidSegments.add(new Segment(7, BOX4 + 1, 39, 57));
-        RightTrapazoidSegments.add(new Segment(8, BOX4 + 1, 34, -34, BOX4 + 0, 159, -23));
-        RightTrapazoidSegments.add(new Segment(9, BOX4 + 0, 71, 62));
-        RightTrapazoidSegments.add(new Segment(10, BOX4 + 0, 64, -64));
+        RightTrapazoidSegments.add(new Segment(0, BOX4 + 0, 0, 160));
+        RightTrapazoidSegments.add(new Segment(0, BOX4 + 1, 0, 160));
+        RightTrapazoidSegments.add(new Segment(0, BOX4 + 4, 0, 160));
+        RightTrapazoidSegments.add(new Segment(0, BOX4 + 5, 0, 160));
+        RightTrapazoidSegments.add(new Segment(0, BOX4 + 6, 0, 160));
+        RightTrapazoidSegments.add(new Segment(0, BOX4 + 7, 0, 160));
+
+//        RightTrapazoidSegments.add(new Segment(0, BOX4 + 5, 154, -44));    // Num, Strip, Start LED, Length (negative means backwards)
+//        RightTrapazoidSegments.add(new Segment(1, BOX4 + 5, 59, 46));
+//        RightTrapazoidSegments.add(new Segment(2, BOX4 + 5, 54, -50));
+//        RightTrapazoidSegments.add(new Segment(3, BOX4 + 4, 159, -50));
+//        RightTrapazoidSegments.add(new Segment(4, BOX4 + 4, 51, 52));
+//        RightTrapazoidSegments.add(new Segment(5, BOX4 + 1, 157, 2, BOX4 + 2, 0, 50));
+//        RightTrapazoidSegments.add(new Segment(6, BOX4 + 1, 153, -55));
+//        RightTrapazoidSegments.add(new Segment(7, BOX4 + 1, 39, 57));
+//        RightTrapazoidSegments.add(new Segment(8, BOX4 + 1, 34, -34, BOX4 + 0, 159, -23));
+//        RightTrapazoidSegments.add(new Segment(9, BOX4 + 0, 71, 62));
+//        RightTrapazoidSegments.add(new Segment(10, BOX4 + 0, 64, -64));
 }
 
 
