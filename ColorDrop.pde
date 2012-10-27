@@ -35,7 +35,7 @@ class ColorDrop extends Pattern {
       }
       
       stroke(r,g,b);
-      line(40, row, width, row);
+      line(40, row, 800, row);
     }
     
 //    if (frame > FRAMERATE*TYPICAL_MODE_TIME) {

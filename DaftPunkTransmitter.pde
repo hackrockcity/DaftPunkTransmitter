@@ -142,6 +142,16 @@ void setup() {
   rgb.m_channel = 9;
   rgb.m_pitch = 25;
   enabledPatterns.put("RGB", rgb);
+  
+  ColorDrop cd = new ColorDrop();
+  cd.m_channel = 9;
+  cd.m_pitch = 26;
+  enabledPatterns.put("ColorDrop", cd);
+  
+  WarpSpeedMrSulu ws = new WarpSpeedMrSulu();
+  ws.m_channel = 9;
+  ws.m_pitch = 27;
+  enabledPatterns.put("WarpSpeed", ws);
 
   for (Map.Entry r : enabledPatterns.entrySet()) {
     Pattern pat = (Pattern) r.getValue();
@@ -357,8 +367,15 @@ void draw() {
   if (keyPressed && key == 'c') {
     // clear everything
    layer0.clear();
-   layer1.clear();
+   //layer1.clear();
    layer2.clear();
+  }
+  
+  if (keyPressed && key == 'v') {
+    // clear everything
+   //layer0.clear();
+   layer1.clear();
+   //layer2.clear();
   }
 
 
