@@ -1,5 +1,5 @@
 class WarpSpeedMrSulu extends Pattern {
-  int NUM_STARS = 1500;
+  int NUM_STARS = 3000;
   WarpStar[] warpstars;
 
   void setup(PApplet parent) {

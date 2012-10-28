@@ -233,8 +233,12 @@ void draw() {
       segment = m.m_pitch - 36;
 
       if (segment >= 0 && segment < LeftRailSegments.size()) {
-        layer2.add(new RailSegmentPattern(LeftRailSegments.get(segment), m.m_channel, m.m_pitch, m.m_velocity));
-        layer2.add(new RailSegmentPattern(RightRailSegments.get(segment), m.m_channel, m.m_pitch, m.m_velocity));
+        try {
+          layer2.add(new RailSegmentPattern(LeftRailSegments.get(segment), m.m_channel, m.m_pitch, m.m_velocity));
+          layer2.add(new RailSegmentPattern(RightRailSegments.get(segment), m.m_channel, m.m_pitch, m.m_velocity));
+        } catch (Exception e) {
+           
+        }
 
       }
       break;
@@ -250,6 +254,7 @@ void draw() {
       for (Map.Entry p : enabledPatterns.entrySet()) {
         Pattern pat = (Pattern) p.getValue();
         if (pat.m_channel == m.m_channel && pat.m_pitch == m.m_pitch && !layer1.contains(pat)) {
+          println("Adding " + pat);
           layer1.add(pat);
         }
       }
@@ -270,37 +275,6 @@ void draw() {
 
   while (noteOffMessages.size () > 0) {
     MidiMessage m = noteOffMessages.poll();
-//    Iterator<Pattern> it = activePatterns.iterator();
-//    
-//    println("off " + m.m_channel + " " + m.m_pitch);
-//    while (it.hasNext ()) {
-//      Pattern p = it.next();
-//      if (p.m_channel == m.m_channel && p.m_pitch == m.m_pitch) {
-//        it.remove();
-//        println("removing " + it);
-//      }
-//    }
-//    
-//    Iterator<Pattern> it2 = priorityPatterns.iterator();
-//    println("off " + m.m_channel + " " + m.m_pitch);
-//    while (it2.hasNext ()) {
-//      Pattern p = it2.next();
-//      if (p.m_channel == m.m_channel && p.m_pitch == m.m_pitch) {
-//        it2.remove();
-//        println("removing " + it2);
-//      }
-//    }
-    
-    
-//    Iterator<List<Pattern>> it = layers.iterator();
-//    while (it.hasNext()) {
-//      List<Pattern> layer = it.next();
-//      for (Pattern p : layer) {
-//        if (p.m_channel == m.m_channel && p.m_pitch == m.m_pitch) {
-//          layer.remove(p);
-//        }
-//      } 
-//    }
 
     Iterator<Pattern> it0 = layer0.iterator();
     while (it0.hasNext ()) {
@@ -316,6 +290,7 @@ void draw() {
       Pattern p = it1.next();
       if (p.m_channel == m.m_channel && p.m_pitch == m.m_pitch) {
         it1.remove();
+        p.reset();
         println("removing " + it1);
       }
     }
@@ -334,19 +309,14 @@ void draw() {
 
   // TODO: Remove any old patterns that might have disappeared
 
-//  pushStyle();
-//  fill(255);
-//  noStroke();
-//  rect(rectX - 50, rectY - 50, 100, 100);
-//  strokeWeight(1);
-//  stroke(255);
-//  line(displayWidth + 1, 0, displayWidth + 1, height);
-//  popStyle();
-
-
-//  for (Pattern p : activePatterns) {
-//    p.draw();
-//  }
+  pushStyle();
+  fill(255);
+  noStroke();
+  rect(rectX - 50, rectY - 50, 100, 100);
+  strokeWeight(1);
+  stroke(255);
+  line(displayWidth + 1, 0, displayWidth + 1, height);
+  popStyle();
 
   for (Pattern p0 : layer0) {
     p0.draw(); 
@@ -375,6 +345,11 @@ void draw() {
     // clear everything
    //layer0.clear();
    layer1.clear();
+  for (Map.Entry r : enabledPatterns.entrySet()) {
+    Pattern pat = (Pattern) r.getValue();
+   
+    pat.reset();
+  }  
    //layer2.clear();
   }
 

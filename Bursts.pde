@@ -60,7 +60,7 @@ class Burst {
     //g = random(118);
     //b = random(128);
    
-    x = random(displayWidth + 1, width);
+    x = random(displayWidth + 1, 800);
     y = random(height);
 
     float max_speed = 2;
@@ -85,7 +85,7 @@ class Burst {
       c = color(red(c)*target_brightness, green(c)*target_brightness, blue(c)*target_brightness);
       fill(c);
       stroke(c);
-      x = constrain(x, displayWidth + widt, width);
+      x = constrain(x, displayWidth + widt, 800);
       //y = constrain(y, displayHeight + heigh, height);
       ellipse(x, y, widt, heigh);
       widt -= 1;
