@@ -2,47 +2,67 @@
 
 void defineLeftTrapazoid() {
 	LeftTrapazoidSegments = new LinkedList<Segment>();
-        LeftTrapazoidSegments.add(new Segment(0, BOX4 + 3, 154, -44));    // Num, Strip, Start LED, Length (negative means backwards)
-        LeftTrapazoidSegments.add(new Segment(1, BOX4 + 3, 59, 46));
-        LeftTrapazoidSegments.add(new Segment(2, BOX4 + 3, 54, -50));
-        LeftTrapazoidSegments.add(new Segment(3, BOX4 + 2, 159, -50));
-        LeftTrapazoidSegments.add(new Segment(4, BOX4 + 2, 51, 52));
-        LeftTrapazoidSegments.add(new Segment(5, BOX4 + 1, 157, 2, BOX4 + 2, 0, 50));
-        LeftTrapazoidSegments.add(new Segment(6, BOX4 + 1, 153, -55));
-        LeftTrapazoidSegments.add(new Segment(7, BOX4 + 1, 39, 57));
-        LeftTrapazoidSegments.add(new Segment(8, BOX4 + 1, 34, -34, BOX4 + 0, 159, -23));
-        LeftTrapazoidSegments.add(new Segment(9, BOX4 + 0, 71, 62));
-        LeftTrapazoidSegments.add(new Segment(10, BOX4 + 0, 64, -64));
+        LeftTrapazoidSegments.add(new Segment(0, BOX2 + 0, 0, 160));
+        LeftTrapazoidSegments.add(new Segment(0, BOX2 + 1, 0, 160));
+        LeftTrapazoidSegments.add(new Segment(0, BOX2 + 2, 0, 160));
+        LeftTrapazoidSegments.add(new Segment(0, BOX2 + 3, 0, 160));
+        LeftTrapazoidSegments.add(new Segment(0, BOX2 + 6, 0, 160));
+        LeftTrapazoidSegments.add(new Segment(0, BOX2 + 7, 0, 160));
+//        LeftTrapazoidSegments.add(new Segment(0, BOX4 + 3, 154, -44));    // Num, Strip, Start LED, Length (negative means backwards)
+//        LeftTrapazoidSegments.add(new Segment(1, BOX4 + 3, 59, 46));
+//        LeftTrapazoidSegments.add(new Segment(2, BOX4 + 3, 54, -50));
+//        LeftTrapazoidSegments.add(new Segment(3, BOX4 + 2, 159, -50));
+//        LeftTrapazoidSegments.add(new Segment(4, BOX4 + 2, 51, 52));
+//        LeftTrapazoidSegments.add(new Segment(5, BOX4 + 1, 157, 2, BOX4 + 2, 0, 50));
+//        LeftTrapazoidSegments.add(new Segment(6, BOX4 + 1, 153, -55));
+//        LeftTrapazoidSegments.add(new Segment(7, BOX4 + 1, 39, 57));
+//        LeftTrapazoidSegments.add(new Segment(8, BOX4 + 1, 34, -34, BOX4 + 0, 159, -23));
+//        LeftTrapazoidSegments.add(new Segment(9, BOX4 + 0, 71, 62));
+//        LeftTrapazoidSegments.add(new Segment(10, BOX4 + 0, 64, -64));
 }
 
 void defineCenterTrapazoid() {
         CenterTrapazoidSegments = new LinkedList<Segment>();
-        CenterTrapazoidSegments.add(new Segment(0, BOX3 + 3, 154, -44));    // Num, Strip, Start LED, Length (negative means backwards)
-        CenterTrapazoidSegments.add(new Segment(1, BOX3 + 3, 59, 46));
-        CenterTrapazoidSegments.add(new Segment(2, BOX3 + 3, 54, -50));
-        CenterTrapazoidSegments.add(new Segment(3, BOX3 + 2, 159, -50));
-        CenterTrapazoidSegments.add(new Segment(4, BOX3 + 2, 51, 52));
-        CenterTrapazoidSegments.add(new Segment(5, BOX3 + 1, 157, 2, BOX4 + 2, 0, 50));
-        CenterTrapazoidSegments.add(new Segment(6, BOX3 + 1, 153, -55));
-        CenterTrapazoidSegments.add(new Segment(7, BOX3 + 1, 39, 57));
-        CenterTrapazoidSegments.add(new Segment(8, BOX3 + 1, 34, -34, BOX4 + 0, 159, -23));
-        CenterTrapazoidSegments.add(new Segment(9, BOX3 + 0, 71, 62));
-        CenterTrapazoidSegments.add(new Segment(10, BOX3 + 0, 64, -64));
+        CenterTrapazoidSegments.add(new Segment(0, BOX3 + 0, 0, 160));
+        CenterTrapazoidSegments.add(new Segment(0, BOX3 + 1, 0, 160));
+        CenterTrapazoidSegments.add(new Segment(0, BOX3 + 2, 0, 160));
+        CenterTrapazoidSegments.add(new Segment(0, BOX3 + 3, 0, 160));
+        CenterTrapazoidSegments.add(new Segment(0, BOX3 + 6, 0, 160));
+        CenterTrapazoidSegments.add(new Segment(0, BOX3 + 7, 0, 160));
+//        CenterTrapazoidSegments = new LinkedList<Segment>();
+//        CenterTrapazoidSegments.add(new Segment(0, BOX3 + 3, 154, -44));    // Num, Strip, Start LED, Length (negative means backwards)
+//        CenterTrapazoidSegments.add(new Segment(1, BOX3 + 3, 59, 46));
+//        CenterTrapazoidSegments.add(new Segment(2, BOX3 + 3, 54, -50));
+//        CenterTrapazoidSegments.add(new Segment(3, BOX3 + 2, 159, -50));
+//        CenterTrapazoidSegments.add(new Segment(4, BOX3 + 2, 51, 52));
+//        CenterTrapazoidSegments.add(new Segment(5, BOX3 + 1, 157, 2, BOX4 + 2, 0, 50));
+//        CenterTrapazoidSegments.add(new Segment(6, BOX3 + 1, 153, -55));
+//        CenterTrapazoidSegments.add(new Segment(7, BOX3 + 1, 39, 57));
+//        CenterTrapazoidSegments.add(new Segment(8, BOX3 + 1, 34, -34, BOX4 + 0, 159, -23));
+//        CenterTrapazoidSegments.add(new Segment(9, BOX3 + 0, 71, 62));
+//        CenterTrapazoidSegments.add(new Segment(10, BOX3 + 0, 64, -64));
 }
 
 void defineRightTrapazoid() {
         RightTrapazoidSegments = new LinkedList<Segment>();
-        RightTrapazoidSegments.add(new Segment(0, BOX4 + 3, 154, -44));    // Num, Strip, Start LED, Length (negative means backwards)
-        RightTrapazoidSegments.add(new Segment(1, BOX4 + 3, 59, 46));
-        RightTrapazoidSegments.add(new Segment(2, BOX4 + 3, 54, -50));
-        RightTrapazoidSegments.add(new Segment(3, BOX4 + 2, 159, -50));
-        RightTrapazoidSegments.add(new Segment(4, BOX4 + 2, 51, 52));
-        RightTrapazoidSegments.add(new Segment(5, BOX4 + 1, 157, 2, BOX4 + 2, 0, 50));
-        RightTrapazoidSegments.add(new Segment(6, BOX4 + 1, 153, -55));
-        RightTrapazoidSegments.add(new Segment(7, BOX4 + 1, 39, 57));
-        RightTrapazoidSegments.add(new Segment(8, BOX4 + 1, 34, -34, BOX4 + 0, 159, -23));
-        RightTrapazoidSegments.add(new Segment(9, BOX4 + 0, 71, 62));
-        RightTrapazoidSegments.add(new Segment(10, BOX4 + 0, 64, -64));
+        RightTrapazoidSegments.add(new Segment(0, BOX4 + 0, 0, 160));
+        RightTrapazoidSegments.add(new Segment(0, BOX4 + 1, 0, 160));
+        RightTrapazoidSegments.add(new Segment(0, BOX4 + 4, 0, 160));
+        RightTrapazoidSegments.add(new Segment(0, BOX4 + 5, 0, 160));
+        RightTrapazoidSegments.add(new Segment(0, BOX4 + 6, 0, 160));
+        RightTrapazoidSegments.add(new Segment(0, BOX4 + 7, 0, 160));
+
+//        RightTrapazoidSegments.add(new Segment(0, BOX4 + 5, 154, -44));    // Num, Strip, Start LED, Length (negative means backwards)
+//        RightTrapazoidSegments.add(new Segment(1, BOX4 + 5, 59, 46));
+//        RightTrapazoidSegments.add(new Segment(2, BOX4 + 5, 54, -50));
+//        RightTrapazoidSegments.add(new Segment(3, BOX4 + 4, 159, -50));
+//        RightTrapazoidSegments.add(new Segment(4, BOX4 + 4, 51, 52));
+//        RightTrapazoidSegments.add(new Segment(5, BOX4 + 1, 157, 2, BOX4 + 2, 0, 50));
+//        RightTrapazoidSegments.add(new Segment(6, BOX4 + 1, 153, -55));
+//        RightTrapazoidSegments.add(new Segment(7, BOX4 + 1, 39, 57));
+//        RightTrapazoidSegments.add(new Segment(8, BOX4 + 1, 34, -34, BOX4 + 0, 159, -23));
+//        RightTrapazoidSegments.add(new Segment(9, BOX4 + 0, 71, 62));
+//        RightTrapazoidSegments.add(new Segment(10, BOX4 + 0, 64, -64));
 }
 
 
@@ -103,18 +123,18 @@ void defineLeftRail() {
   LeftRailSegments.add(new Segment("H5", BOX1 + 3, 107, 23, 7, 16));
   LeftRailSegments.add(new Segment("H6", BOX1 + 3, 132, 24, 16, 17)); 
 
-  LeftRailSegments.add(new Segment("J1", BOX3 + 4, 1, 23, 18, 8));   // Name, Strip, Offset, Length, StartPoint, EndPoint
-  LeftRailSegments.add(new Segment("J2", BOX3 + 4, 25, 23, 8, 9));
-  LeftRailSegments.add(new Segment("J3", BOX3 + 4, 51, 23, 9, 18));    // J is not mapped in physical space !!
-  LeftRailSegments.add(new Segment("J4", BOX3 + 4, 79, 22, 18, 26)); 
-  LeftRailSegments.add(new Segment("J5", BOX3 + 4, 103, 23, 26, 25));
-  LeftRailSegments.add(new Segment("J6", BOX3 + 4, 128, 24, 25, 17)); 
+  LeftRailSegments.add(new Segment("J1", BOX3 + 5, 1, 23, 18, 17));   // Name, Strip, Offset, Length, StartPoint, EndPoint
+  LeftRailSegments.add(new Segment("J2", BOX3 + 5, 26, 22, 17, 8));
+  LeftRailSegments.add(new Segment("J3", BOX3 + 5, 51, 22, 8, 7));    // K is not mapped in physical space !!
+  LeftRailSegments.add(new Segment("J4", BOX3 + 5, 76, 24, 7, 17)); 
+  LeftRailSegments.add(new Segment("J5", BOX3 + 5, 104, 23, 17, 26));
+  LeftRailSegments.add(new Segment("J6", BOX3 + 5, 129, 23, 17, 26));
 
-  LeftRailSegments.add(new Segment("K1", BOX3 + 5, 3, 23, 18, 17));   // Name, Strip, Offset, Length, StartPoint, EndPoint
-  LeftRailSegments.add(new Segment("K2", BOX3 + 5, 28, 22, 17, 8));
-  LeftRailSegments.add(new Segment("K3", BOX3 + 5, 53, 22, 8, 7));    // K is not mapped in physical space !!
-  LeftRailSegments.add(new Segment("K4", BOX3 + 5, 78, 24, 7, 17)); 
-  LeftRailSegments.add(new Segment("K5", BOX3 + 5, 104, 23, 17, 26));
+  LeftRailSegments.add(new Segment("K1", BOX3 + 4, 1, 23, 18, 8));   // Name, Strip, Offset, Length, StartPoint, EndPoint
+  LeftRailSegments.add(new Segment("K2", BOX3 + 4, 28, 23, 8, 9));
+  LeftRailSegments.add(new Segment("K3", BOX3 + 4, 51, 23, 9, 18));    // J is not mapped in physical space !!
+  LeftRailSegments.add(new Segment("K4", BOX3 + 4, 79, 22, 18, 26)); 
+  LeftRailSegments.add(new Segment("K5", BOX3 + 4, 105, 23, 26, 25));
 }
 //
 void defineRightRail() {
@@ -174,17 +194,17 @@ void defineRightRail() {
   RightRailSegments.add(new Segment("H5", BOX0 + 3, 80, 24, 6, 7)); 
   RightRailSegments.add(new Segment("H6", BOX0 + 3, 105, 23, 7, 16));
 
-  RightRailSegments.add(new Segment("J1", BOX4 + 5, 0, 23, 18, 8));   // Name, Strip, Offset, Length, StartPoint, EndPoint
-  RightRailSegments.add(new Segment("J2", BOX4 + 5, 26, 22, 8, 9));
-  RightRailSegments.add(new Segment("J3", BOX4 + 5, 51, 24, 9, 18));    // J is not mapped in physical space !!
-  RightRailSegments.add(new Segment("J4", BOX4 + 5, 78, 24, 18, 26)); 
-  RightRailSegments.add(new Segment("J5", BOX4 + 5, 104, 23, 26, 25));
-  RightRailSegments.add(new Segment("J6", BOX4 + 5, 130, 24, 25, 17)); 
+  RightRailSegments.add(new Segment("J1", BOX4 + 2, 0, 23, 18, 8));   // Name, Strip, Offset, Length, StartPoint, EndPoint
+  RightRailSegments.add(new Segment("J2", BOX4 + 2, 26, 22, 8, 9));
+  RightRailSegments.add(new Segment("J3", BOX4 + 2, 51, 24, 9, 18));    // J is not mapped in physical space !!
+  RightRailSegments.add(new Segment("J4", BOX4 + 2, 78, 24, 18, 26)); 
+  RightRailSegments.add(new Segment("J5", BOX4 + 2, 104, 23, 26, 25));
+  RightRailSegments.add(new Segment("J6", BOX4 + 2, 130, 24, 25, 17)); 
 
-  RightRailSegments.add(new Segment("K1", BOX4 + 6, 0, 24, 18, 17));   // Name, Strip, Offset, Length, StartPoint, EndPoint
-  RightRailSegments.add(new Segment("K2", BOX4 + 6, 27, 23, 17, 8));
-  RightRailSegments.add(new Segment("K3", BOX4 + 6, 53, 23, 8, 7));    // K is not mapped in physical space !!
-  RightRailSegments.add(new Segment("K4", BOX4 + 6, 79, 23, 7, 17)); 
-  RightRailSegments.add(new Segment("K5", BOX4 + 6, 105, 24, 17, 26));
+  RightRailSegments.add(new Segment("K1", BOX4 + 3, 0,   24, 18, 17));   // Name, Strip, Offset, Length, StartPoint, EndPoint
+  RightRailSegments.add(new Segment("K2", BOX4 + 3, 27,  23, 17, 8));
+  RightRailSegments.add(new Segment("K3", BOX4 + 3, 53,  23, 8,  7));    // K is not mapped in physical space !!
+  RightRailSegments.add(new Segment("K4", BOX4 + 3, 79,  23, 7,  17)); 
+  RightRailSegments.add(new Segment("K5", BOX4 + 3, 105, 24, 17, 26));
 }
 

@@ -21,7 +21,7 @@ int transmit_port       = 58082;        // Default 58802
 int displayWidth = 40;                  // 8* number of control boxes
 int displayHeight = 160;                // 160 for full-height strips
 
-int FRAMERATE = 30;                     // larger number means faster updates
+int FRAMERATE = 60;                     // larger number means faster updates
 float bright = 1;                       // Global brightness modifier
 String midiInputName = "IAC Bus 1";
 //String midiInputName = "Port 1";
@@ -153,6 +153,16 @@ void setup() {
   ws.m_pitch = 27;
   enabledPatterns.put("WarpSpeed", ws);
 
+  GridRoutine gr = new GridRoutine();
+  gr.m_channel = 9;
+  gr.m_pitch = 28;
+  enabledPatterns.put("GridRoutine", gr);
+  
+  BouncyThings bt = new BouncyThings();
+  bt.m_channel = 9;
+  bt.m_pitch = 29;
+  enabledPatterns.put("BouncyThings", bt);
+
   for (Map.Entry r : enabledPatterns.entrySet()) {
     Pattern pat = (Pattern) r.getValue();
     pat.setup(this);
@@ -185,7 +195,6 @@ void setup() {
 
   defineLeftRail();   // Define the rail segments by where they are in pixel space
   //leftRail = new Fixture(LeftRailSegments, new PVector(100, 0));
-
 
    defineRightRail();
    //rightRail = new Fixture(RightRailSegments, new PVector(750, 0));
@@ -232,14 +241,12 @@ void draw() {
 
       segment = m.m_pitch - 36;
 
+      // TODO: WTF, left rails are defined twice?
       if (segment >= 0 && segment < LeftRailSegments.size()) {
-        try {
-          layer2.add(new RailSegmentPattern(LeftRailSegments.get(segment), m.m_channel, m.m_pitch, m.m_velocity));
-          layer2.add(new RailSegmentPattern(RightRailSegments.get(segment), m.m_channel, m.m_pitch, m.m_velocity));
-        } catch (Exception e) {
-           
-        }
-
+        layer2.add(new RailSegmentPattern(LeftRailSegments.get(segment), m.m_channel, m.m_pitch, m.m_velocity));
+      }
+      if (segment >= 0 && segment < RightRailSegments.size()) {
+        layer2.add(new RailSegmentPattern(RightRailSegments.get(segment), m.m_channel, m.m_pitch, m.m_velocity));
       }
       break;
     case 4:
@@ -248,7 +255,12 @@ void draw() {
       // Flashes
       layer0.add(new FlashPattern(m.m_channel, m.m_pitch, m.m_velocity));
       break;
-
+      
+    case 5:
+              println("Adding flash boxes " + m.m_channel + " " + m.m_pitch + " " + m.m_velocity);
+      // Flashes
+      layer0.add(new FlashBoxPattern(m.m_channel, m.m_pitch, m.m_velocity));
+      break;
     case 9:
       
       for (Map.Entry p : enabledPatterns.entrySet()) {
