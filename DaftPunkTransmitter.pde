@@ -6,6 +6,8 @@ import hypermedia.net.*;
 import java.io.*;
 import java.util.concurrent.*;
 
+import java.util.*;
+
 /////////// Configuration Options /////////////////////
 
 boolean duplicateTrapazoids = true;
